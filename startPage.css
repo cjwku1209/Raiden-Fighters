@@ -1,3 +1,8 @@
+text {
+    font-family: 'Ubuntu', sans-serif;
+    cursor: default;
+}
+
 #main {
     display: none;
 }
@@ -5,3 +10,15 @@
 #start-Page {
     display: block;
 }
+
+#start-text{
+    display: block;
+    cursor: pointer;
+    transition: all 1.5s;
+}
+
+#start-text:hover {
+    fill: CornflowerBlue;
+    font-size: 120%;
+}
+

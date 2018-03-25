@@ -1,4 +1,10 @@
+var timeRemaining = 300;
+
 function start(){
-    $("#start-Page").css("display","none");
     $("#main").css("display", "block");
+    $("#start-Page").css("display","none");
+    setTimeout(countdown, 1000)
 }
+
+
+
