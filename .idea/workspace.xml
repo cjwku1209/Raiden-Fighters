@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b3d51640-07b8-4cc3-8658-8be05aec0063" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/raiden-fighters.html" afterPath="$PROJECT_DIR$/raiden-fighters.html" />
-      <change beforePath="$PROJECT_DIR$/startPage.css" afterPath="$PROJECT_DIR$/startPage.css" />
-      <change beforePath="$PROJECT_DIR$/startPage.js" afterPath="$PROJECT_DIR$/startPage.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,8 +16,8 @@
       <file leaf-file-name="raiden-fighters.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/raiden-fighters.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="9" column="15" lean-forward="true" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+            <state relative-caret-position="350">
+              <caret line="14" column="15" lean-forward="false" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -78,8 +76,8 @@
       <list>
         <option value="$PROJECT_DIR$/startPage.js" />
         <option value="$PROJECT_DIR$/main.js" />
-        <option value="$PROJECT_DIR$/raiden-fighters.html" />
         <option value="$PROJECT_DIR$/startPage.css" />
+        <option value="$PROJECT_DIR$/raiden-fighters.html" />
       </list>
     </option>
   </component>
@@ -156,12 +154,12 @@
       <updated>1521978918608</updated>
       <workItem from="1521978919667" duration="87000" />
       <workItem from="1521979015758" duration="796000" />
-      <workItem from="1521979889040" duration="5515000" />
+      <workItem from="1521979889040" duration="5774000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6398000" />
+    <option name="totallyTimeSpent" value="6657000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="30" width="2560" height="1410" extended-state="6" />
@@ -271,8 +269,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/raiden-fighters.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="15" lean-forward="true" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+        <state relative-caret-position="350">
+          <caret line="14" column="15" lean-forward="false" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
           <folding />
         </state>
       </provider>
