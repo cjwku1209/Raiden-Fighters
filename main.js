@@ -1,4 +1,4 @@
-function countdown() {
+function timer() {
     timeRemaining--;
 
     if(timeRemaining > 0){

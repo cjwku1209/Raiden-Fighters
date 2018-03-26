@@ -18,13 +18,35 @@
         <!--Start page-->
         <div id="start-Page">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
-                <rect id="space" height="500" width="350" y="0" x="0" stroke="none" fill="#000000"/>
+                <!--color of bullet-->
+                <defs>
+                    <linearGradient spreadMethod="pad" y2="1" x2="0.00238" y1="0" x1="0" id="bullet-color">
+                        <stop offset="0" stop-color="#f20000"/>
+                        <stop offset="1" stop-color="#ffff00"/>
+                        <stop offset="1" stop-color="#ffff00"/>
+                    </linearGradient>
+                </defs>
+                <!--space-->
+                <rect id="start-Page-space" height="500" width="350" y="0" x="0" stroke="none" fill="#000000"/>
                 <g id="game-title" >
                     <text id="game-text" x="175" y="125" fill="white" text-anchor="middle" font-size="40">Raiden Fighter</text>
                 </g>
+                <!--Start button-->
                 <g id="start-button" onclick="start()">
-                    <text id="start-text" x="175" y="350" fill="white" font-size="20" text-anchor="middle">Start!</text>
+                    <text id="start-text" x="87" y="300" fill="white" font-size="20" text-anchor="middle">Start!</text>
                 </g>
+                <!--Airplane in start page-->
+                <g id="start-Page-airplane"  fill="white">
+                    <path id="start-Page-airplane-svg" d="m300.23526,434.07156l-16.82434,0l0.00393,-7.45008c0,-2.15463 -1.40644,-3.47448 -4.17608,-3.94931c-0.43838,-1.8062 -1.32813,-3.21091 -2.7258,-3.21091c-1.40674,0 -2.29922,1.42323 -2.73457,3.24671c-2.63329,0.50411 -3.96838,1.81271 -3.96838,3.91352l0,7.45008l-17.12274,0c-1.22776,0 -2.22636,0.86831 -2.22636,1.93561l0,3.47499c0,0.96918 0.88613,1.91233 2.01926,2.14762l5.64238,1.16066c0.87948,0.18272 2.29831,0.29211 3.16176,0.29211l9.18931,0c0.25668,2.23047 0.49068,4.59885 0.49068,5.8291c0,1.04753 0.39847,2.3819 0.4154,2.43797l1.87112,5.10923l-5.93866,1.40621c-0.80329,0.18397 -1.43244,0.86681 -1.43244,1.55439l0,1.40922c0,0.72814 0.71834,1.27731 1.67098,1.27731l6.77914,0c0.49854,2.13735 1.17425,3.09627 2.18312,3.09627c1.00887,0 1.68458,-0.95892 2.18312,-3.09627l6.85865,0c0.88008,0 1.7907,-0.47783 1.7907,-1.27731l0,-1.40922c0,-0.68133 -0.66845,-1.38994 -1.48867,-1.57968l-6.10887,-1.42223l1.96998,-5.56403c0.0904,-0.18898 0.43294,-0.97744 0.43294,-2.06051c0,-1.20422 0.25245,-3.51979 0.53089,-5.71046l8.79386,0c0.84683,0 2.23815,-0.10012 3.14574,-0.2851l5.81833,-1.15691c1.13404,-0.23128 2.02228,-1.17919 2.02228,-2.15838l0,-3.47499c-0.0003,-1.0673 -0.9992,-1.93561 -2.22666,-1.93561z"/>
+                </g>
+                <!--Bullet 1-->
+                <rect id="start-Page-bullet1" height="30" width="5" y="390" x="274" stroke="none" fill="url(#bullet-color)">
+                    <animate attributeName="y" values="390;200" dur="2s" repeatCount="indefinite" />
+                </rect>
+                <!--Bullet 2-->
+                <rect id="start-Page-bullet2" height="30" width="5" y="500" x="274" stroke="none" fill="url(#bullet-color)">
+                    <animate attributeName="y" values="390;200" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+                </rect>
                 <!--
                 <g id="star" fill-opacity="0.591603" fill="#ffff00" stroke="null">
                     <path stroke="null" id="svg_15" d="m23.107828,35.720642l9.267681,-12.97677l0.121199,6.905223l-9.38888,6.071547z" stroke-miterlimit="4" fill-opacity="0.591603" fill="#ffff00"/>
