@@ -1,7 +1,3 @@
-function gameOver(){
-
-}
-
 function start(){
 	console.log("clicked");
     $("#main").css("display", "block");

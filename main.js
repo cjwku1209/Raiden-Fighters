@@ -25,7 +25,5 @@ $(document).ready(function() {
 		start();
 		setTimeout(countdown, 1000);
 	});
-	// $('#start-button').on("click", start());
-	// Start the countdown screen
 
 });
