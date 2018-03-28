@@ -25,3 +25,7 @@ text {
 #start-Page-airplane {
     transform: translate(117px,-33px);
 }
+
+#player {
+    position: relative;
+}
