@@ -20,7 +20,7 @@ function countdown() {
 
 function shoot() {
 	$('#left-bullet').css("animationPlayState", "running");
-	console.log("hi");
+
 }
 
 function gameOver(){
@@ -34,10 +34,18 @@ $(document).ready(function() {
 		start();
 		setTimeout(countdown, 1000);
 	});
+	$("#left-bullet").on("animationiteration", function() {
+		$("#left-bullet").css({
+			"animationPlayState": "paused",
+			'display': 'none'
+		});
+	});
 	window.addEventListener('keydown', function (e) {
 		console.log(e.keyCode);
 		switch (e.keyCode) {
 			case 32:	//space
+				// bullet-animation.insertRule("0% {transform: translate(" + x + " " +y+ ");}");
+				// bullet-animation.insertRule("100% {transform: translate(" + x + " "+ "-430);}");
 				$('#left-bullet').css('transform', 'translate(' + x +'px,'+ y +'px)');
 				$('#right-bullet').css('transform', 'translate(' + x +'px,'+ y +'px)');
 				$('#left-bullet').css("display", "block");
