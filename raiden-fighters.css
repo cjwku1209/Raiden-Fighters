@@ -1,9 +1,18 @@
 #left-bullet {
     display: none;
+    animation-name: bullet-animation;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+    animation-play-state: paused;
 }
 
 #right-bullet {
     display: none;
+    /*animation-name: bullet-animation;*/
+    /*animation-iteration-count: infinite;*/
+    /*animation-duration: 10s;*/
+    /*animation-fill-mode: both;*/
 }
 
 #lazer {

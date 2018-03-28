@@ -1,3 +1,5 @@
+
+
 var timeRemaining = 300;
 function countdown() {
 	// Decrease the remaining time
@@ -16,6 +18,11 @@ function countdown() {
 	}
 }
 
+function shoot() {
+	$('#left-bullet').css("animationPlayState", "running");
+	console.log("hi");
+}
+
 function gameOver(){
 
 }
@@ -31,7 +38,12 @@ $(document).ready(function() {
 		console.log(e.keyCode);
 		switch (e.keyCode) {
 			case 32:	//space
-
+				$('#left-bullet').css('transform', 'translate(' + x +'px,'+ y +'px)');
+				$('#right-bullet').css('transform', 'translate(' + x +'px,'+ y +'px)');
+				$('#left-bullet').css("display", "block");
+				$('#right-bullet').css("display", "block");
+				shoot();
+				
 				break;
 			case 37:	//left
 				if(x <= -150){

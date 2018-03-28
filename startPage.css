@@ -30,3 +30,10 @@ text {
     position: relative;
 }
 
+#enemy{
+    display:none;
+}
+#boss {
+    display: none;
+}
+
