@@ -29,3 +29,11 @@ text {
 #player {
     position: relative;
 }
+
+#game-instruction-text{
+    font-size: 14px;
+}
+
+#highlight{
+    color: red;
+}
