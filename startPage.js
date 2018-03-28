@@ -1,9 +1,12 @@
-var timeRemaining = 300;
+function gameOver(){
+
+}
 
 function start(){
+	console.log("clicked");
     $("#main").css("display", "block");
     $("#start-Page").css("display","none");
-    setTimeout(timer, 1000)
+	// setTimeout(countdown, 1000);
 }
 
 
