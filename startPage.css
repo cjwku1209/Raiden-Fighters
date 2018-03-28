@@ -19,7 +19,7 @@ text {
 
 #start-text:hover {
     fill: CornflowerBlue;
-    font-size: 150%;
+    font-size: 130%;
 }
 
 #start-Page-airplane {
@@ -32,8 +32,6 @@ text {
 
 #game-instruction-text{
     font-size: 14px;
-}
-
-#highlight{
-    color: red;
+    fill: white;
+    text-anchor: start;
 }
