@@ -30,6 +30,9 @@ $(document).ready(function() {
 	window.addEventListener('keydown', function (e) {
 		console.log(e.keyCode);
 		switch (e.keyCode) {
+			case 32:	//space
+
+				break;
 			case 37:	//left
 				if(x <= -150){
 					x= -150;
