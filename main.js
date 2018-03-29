@@ -1,6 +1,6 @@
 var timeRemaining = 300;
-var boolLaser = false;
-var boolRapidFire = true;
+var boolLaser = true;
+var boolRapidFire = false;
 
 function countdown() {
     // Decrease the remaining time
@@ -81,6 +81,8 @@ $(document).ready(function() {
                 }
                 var shootYcor = $("#right-bullet").css("transform");
                 shootYcor = parseFloat(shootYcor.split(" ")[5]);
+				var laserYcor = $("#laser").css("transform");
+				laserYcor = parseFloat(laserYcor.split(" ")[5]);
                 if(isNaN(shootYcor) && boolLaser == false){
                     bulletFrameChange(x,y);
                     $('#left-bullet').css("display", "block");
@@ -89,7 +91,7 @@ $(document).ready(function() {
                     $('#right-bullet').css('animationPlayState', 'running');
                     shoot();
                 }
-                else if (isNaN(shootYcor) && boolLaser == true){
+                else if (isNaN(laserYcor) && boolLaser == true){
                     laserFrameChange(x,y);
                     $('#laser').css("display", "block");
                     $('#laser').css('animationPlayState', 'running');
