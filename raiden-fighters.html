@@ -4,14 +4,27 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="startPage.js"></script>
     <script src="main.js"></script>
-    <link rel="stylesheet" href="startPage.css">
+    <link rel="stylesheet" href="startPage.css" >
+    <link rel="stylesheet" href="raiden-fighters.css" >
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-    <style>
-        #enemy{
-            display:none;
+    <style id="bullet-style">
+        @keyframes bullet-animation {
+            from {
+                transform: translate(0px, 0px);
+            }
+            to {
+                transform: translate(0px, -430px);
+            }
         }
-        #boss {
-            display: none;
+    </style>
+    <style id="laser-style">
+        @keyframes laser-animation {
+            from {
+                transform: translate(0px, 0px);
+            }
+            to {
+                transform: translate(0px, -430px);
+            }
         }
     </style>
     <body>
@@ -58,25 +71,26 @@
                 <rect id="start-Page-bullet4" height="30" width="5" y="500" x="304" stroke="none" fill="url(#bullet-color)">
                     <animate attributeName="y" values="390;200" dur="2s" repeatCount="indefinite" begin="0.5s"/>
                 </rect>
-                <!--
-                <g id="star" fill-opacity="0.591603" fill="#ffff00" stroke="null">
-                    <path stroke="null" id="svg_15" d="m23.107828,35.720642l9.267681,-12.97677l0.121199,6.905223l-9.38888,6.071547z" stroke-miterlimit="4" fill-opacity="0.591603" fill="#ffff00"/>
-                    <path stroke="null" id="svg_16" d="m23.107828,35.720642l2.705173,-11.076097l6.414389,-2.015526l-9.119562,13.091624z" stroke-miterlimit="4" fill-opacity="0.591603" fill="#ffff00"/>
-                    <path stroke="null" id="svg_17" d="m41.892158,35.720642l-9.119371,-13.091295l6.414261,2.015526l2.70511,11.075769l0,0z" stroke-miterlimit="4" fill-opacity="0.591603" fill="#ffff00"/>
-                    <path stroke="null" id="svg_18" d="m41.892158,35.720642l-9.38971,-6.072007l0.121136,-6.90588l9.268574,12.977887z" stroke-miterlimit="4" fill-opacity="0.591603" fill="#ffff00"/>
-                    <path stroke="null" id="svg_19" d="m39.190303,24.639683l-6.337587,-2.25233l14.844071,-5.068416l-8.506484,7.320746l0,0z" stroke-miterlimit="4" fill-opacity="0.591603" fill="#ffff00"/>
-                    <path stroke="null" id="svg_20" d="m47.696787,17.318937l-14.905245,4.888119l3.842982,-5.660754l11.062263,0.772635l0,0z" stroke-miterlimit="4" fill-opacity="0.591603" fill="#ffff00"/>
-                    <path stroke="null" id="svg_21" d="m25.809429,24.639486l-8.506229,-7.320549l14.843689,5.068285l-6.337459,2.252265l0,0z" stroke-miterlimit="4" fill-opacity="0.591603" fill="#ffff00"/>
-                    <path stroke="null" id="svg_22" d="m17.3032,17.318937l11.061434,-0.772569l3.84279,5.660294l-14.904224,-4.887725l0,0z" stroke-miterlimit="4" fill-opacity="0.591603" fill="#ffff00"/>
-                    <path stroke="null" id="svg_23" d="m32.407339,22.055275l-4.038368,-5.512982l4.13099,-10.596248l-0.092622,16.10923z" stroke-miterlimit="4" fill-opacity="0.591603" fill="#ffff00"/>
-                    <path stroke="null" id="svg_24" d="m32.499961,5.946046l4.130735,10.595459l-4.038049,5.512654l-0.092686,-16.108113z" stroke-miterlimit="4" fill-opacity="0.591603" fill="#ffff00"/>
-                </g>
-                -->
             </svg>
         </div>
         <!--Game scene-->
         <div id="main">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+                <!-- bullet color -->
+                <defs>
+                    <linearGradient spreadMethod="pad" y2="1" x2="0.00238" y1="0" x1="0" id="main-bullet-color">
+                        <stop offset="0" stop-color="#f20000"/>
+                        <stop offset="1" stop-color="#ffff00"/>
+                    </linearGradient>
+                </defs>
+
+                <defs>
+                    <linearGradient spreadMethod="pad" y2="1" x2="0.00238" y1="0" x1="0" id="main-lazer-color">
+                        <stop offset="0" stop-color="#D1E7D1"/>
+                        <stop offset="1" stop-color="#66B266"/>
+                    </linearGradient>
+                </defs>
+
                 <!--Space-->
                 <rect id="space" height="500" width="350" y="0" x="0" stroke="none" fill="#0F0F24"/>
                 <!--Enemy-->
@@ -107,7 +121,30 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
                     <g stroke="null" id="player">
                         <path fill="#ffffff" d="m170.29112,476.1881l-4.7224,3.26097l0,3.74177c0,0 5.26132,2.30175 6.6526,4.55493l0.61654,-0.43177l0.66806,-8.6802l0.58595,1.63139l1.23212,0.04674l1.2327,-0.04751l0.58614,-1.63072l0.66844,8.67982l0.61711,0.43129c1.38927,-2.25309 6.65107,-4.55417 6.65107,-4.55417l0,-3.74177l-4.7224,-3.26097l0.12149,-0.62294c5.32269,-0.23983 9.85344,-2.15731 9.85344,-2.15731l0,-4.74888c0,0 -1.7265,-0.89174 -3.75209,-2.175l0,-0.50786c0,-0.58232 -0.4722,-3.30618 -1.0549,-3.30618l-0.14099,0c-0.41332,0 -0.76996,1.36614 -0.94393,2.37028c-0.29298,-0.2122 -0.58108,-0.42842 -0.86229,-0.64827l0,-2.16754c0.00086,-0.58241 -0.47192,-3.30637 -1.05452,-3.30637l-0.14061,0c-0.5827,0 -1.05529,2.72396 -1.05529,3.30637l0,0.0954c-0.67427,-0.78334 -1.10365,-1.54986 -1.10365,-2.23808c0,-3.35636 -0.47039,-7.71467 -0.80561,-7.57062c-0.33551,0.14386 -0.98828,1.35447 -0.98828,1.35447s-1.21243,0.3595 -1.21243,-5.2033c0,-5.56281 -1.89349,-7.81619 -1.89349,-7.81619s-1.89378,2.25414 -1.89378,7.81686s-1.21148,5.2033 -1.21148,5.2033s-0.65324,-1.21138 -0.98885,-1.35467c-0.33532,-0.14386 -0.80494,4.21445 -0.80494,7.57081c0,0.91707 -0.75734,1.97369 -1.8544,3.02506l0,-0.8817c0,-0.58394 -0.47268,-3.3079 -1.055,-3.3079l-0.14137,0c-0.58222,0 -1.055,2.72396 -1.055,3.30637l0,2.73562c-0.26048,0.19031 -0.52535,0.37652 -0.79022,0.55928c-0.1235,-0.96954 -0.53013,-2.84918 -1.01495,-2.84918l-0.14147,0c-0.58222,0 -1.05481,2.72396 -1.05481,3.30618l0,0.97404c-1.6833,1.02737 -3.00164,1.70882 -3.00164,1.70882l0,4.74726c0,0 4.53094,1.91834 9.85344,2.15894l0.12168,0.62313l0.00001,0z" id="svg_3" stroke="null"/>
+                    </g>
                 </svg>
+
+                <!--left bullet-->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+                    <rect id="left-bullet" height="30" width="5" y="420" x="166" stroke="none" fill="url(#main-bullet-color)">
+                        <!--<animate attributeName="y" values="390;200" dur="2s" repeatCount="indefinite" />-->
+                    </rect>
+                </svg>
+
+                <!--right bullet-->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+                    <rect id="right-bullet" height="30" width="5" y="420" x="180" stroke="none" fill="url(#main-bullet-color)">
+                        <!--<animate attributeName="y" values="390;200" dur="2s" repeatCount="indefinite" />-->
+                    </rect>
+                </svg>
+
+                <!--laser-->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+                    <rect id="laser" height="50" width="10" y="390" x="170" stroke="none" fill="url(#main-lazer-color)">
+                        <!--<animate attributeName="y" values="390;200" dur="2s" repeatCount="indefinite" />-->
+                    </rect>
+                </svg>
+
                 <!--score-->
                 <g id="score-container">
                     <text id="score-text" x="175" y="15" fill="red" font-size="16" text-anchor="middle">SCORE: </text>

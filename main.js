@@ -1,4 +1,7 @@
 var timeRemaining = 300;
+var boolLaser = false;
+var boolRapidFire = true;
+
 function countdown() {
 	// Decrease the remaining time
 	timeRemaining--;
@@ -16,9 +19,29 @@ function countdown() {
 	}
 }
 
+function shoot() {
+	$('#left-bullet').css("animationPlayState", "running");
+
+}
+
+function bulletFrameChange(x, y) {
+	var styles = document.getElementById('bullet-style');
+	var str = "@keyframes bullet-animation { from { transform: translate(" + x + "px, " + y + "px);}" + " to { transform: translate(" + x + "px, -430px);}}";
+	styles.innerText= str;
+}
+
+function laserFrameChange(x, y) {
+	var styles = document.getElementById('laser-style');
+	var str = "@keyframes laser-animation { from { transform: translate(" + x + "px, " + y + "px);}" + " to { transform: translate(" + x + "px, -430px);}}";
+	styles.innerText= str;
+}
+
+
+
 function gameOver(){
 
 }
+
 
 $(document).ready(function() {
 	var x = 0;
@@ -27,9 +50,52 @@ $(document).ready(function() {
 		start();
 		setTimeout(countdown, 1000);
 	});
+	$("#left-bullet").on("animationiteration", function() {
+		$("#left-bullet").css({
+			"animationPlayState": "paused",
+			'display': 'none'
+		});
+	});
+	$("#right-bullet").on("animationiteration", function() {
+		$("#right-bullet").css({
+			"animationPlayState": "paused",
+			'display': 'none'
+		});
+	});
+	$("#laser").on("animationiteration", function() {
+		$("#laser").css({
+			"animationPlayState": "paused",
+			'display': 'none'
+		});
+	});
 	window.addEventListener('keydown', function (e) {
 		console.log(e.keyCode);
 		switch (e.keyCode) {
+			case 32:	//space
+				if(boolRapidFire == true){
+					$("#right-bullet").css("animationDuration", "1s");
+					$("#left-bullet").css("animationDuration", "1s");
+				}
+				else{
+					$("#right-bullet").css("animationDuration", "2s");
+					$("#left-bullet").css("animationDuration", "2s");
+				}
+				var shootYcor = $("#right-bullet").css("transform");
+				shootYcor = parseFloat(shootYcor.split(" ")[5]);
+				if(isNaN(shootYcor) && boolLaser == false){
+					bulletFrameChange(x,y);
+					$('#left-bullet').css("display", "block");
+					$('#right-bullet').css("display", "block");
+					$('#left-bullet').css('animationPlayState', 'running');
+					$('#right-bullet').css('animationPlayState', 'running');
+					shoot();
+				}
+				else if (isNaN(shootYcor) && boolLaser == true){
+					laserFrameChange(x,y);
+					$('#laser').css("display", "block");
+					$('#laser').css('animationPlayState', 'running');
+				}
+				break;
 			case 37:	//left
 				if(x <= -150){
 					x= -150;
