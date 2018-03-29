@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
     <title> Classic Raiden Fighters Rebuild </title>
+
+    <!-- Javascript -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="startPage.js"></script>
     <script src="main.js"></script>
-    <link rel="stylesheet" href="startPage.css" >
-    <link rel="stylesheet" href="raiden-fighters.css" >
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="startPage.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="raiden-fighters.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+
+    <!--Bullet animation -->
     <style id="bullet-style">
         @keyframes bullet-animation {
             from {
@@ -27,6 +34,7 @@
             }
         }
     </style>
+
     <body>
         <!--Start page-->
         <div id="start-Page">
@@ -45,8 +53,24 @@
                     <text id="game-text" x="175" y="125" fill="white" text-anchor="middle" font-size="40">Raiden Fighter</text>
                 </g>
                 <!--Start button-->
-                <g id="start-button">
-                    <text id="start-text" x="87" y="300" fill="white" font-size="20" text-anchor="middle">Start!</text>
+                <g id="start-button" font-size="25">
+                    <text id="start-text" x="87" y="250" fill="white" text-anchor="middle">Start!</text>
+                </g>
+
+                <!--Game instruction-->
+                <g id="game-instruction">
+                    <text id="game-instruction-text" x="30" y="350">
+                        Use arrow keys to control
+                    </text>
+                    <text id="game-instruction-text" x="30" y="370">
+                        the aircraft and DESTROY
+                    </text>
+                    <text id="game-instruction-text" x="30" y="390">
+                        all enemies by space key!
+                    </text>
+                    <text id="game-instruction-text" x="30" y="410">
+                        You only have 5 minutes!
+                    </text>
                 </g>
 
                 <!--Airplane in start page-->
