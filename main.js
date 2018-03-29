@@ -1,5 +1,5 @@
 var timeRemaining = 300;
-var boolLaser = true;
+var boolLaser = false;
 var boolRapidFire = true;
 
 function countdown() {
@@ -14,7 +14,6 @@ function countdown() {
 
     // Game over when the time is up
     else {
-
         gameOver();
     }
 }
