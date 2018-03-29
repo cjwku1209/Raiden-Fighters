@@ -9,10 +9,11 @@
 
 #right-bullet {
     display: none;
-    /*animation-name: bullet-animation;*/
-    /*animation-iteration-count: infinite;*/
-    /*animation-duration: 10s;*/
-    /*animation-fill-mode: both;*/
+    animation-name: bullet-animation;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
 }
 
 #lazer {

@@ -1,6 +1,6 @@
-
-
 var timeRemaining = 300;
+var cssRule;
+
 function countdown() {
 	// Decrease the remaining time
 	timeRemaining--;
@@ -23,9 +23,17 @@ function shoot() {
 
 }
 
+function bulletFrameChange(x, y) {
+	var styles = document.getElementById('bullet');
+	var str = "@keyframes bullet-animation { from { transform: translate(" + x + "px, " + y + "px);}" + " to { transform: translate(" + x + "px, -430px);}}";
+	styles.innerText= str;
+}
+
+
 function gameOver(){
 
 }
+
 
 $(document).ready(function() {
 	var x = 0;
@@ -40,18 +48,26 @@ $(document).ready(function() {
 			'display': 'none'
 		});
 	});
+	$("#right-bullet").on("animationiteration", function() {
+		$("#right-bullet").css({
+			"animationPlayState": "paused",
+			'display': 'none'
+		});
+	});
 	window.addEventListener('keydown', function (e) {
 		console.log(e.keyCode);
 		switch (e.keyCode) {
 			case 32:	//space
-				// bullet-animation.insertRule("0% {transform: translate(" + x + " " +y+ ");}");
-				// bullet-animation.insertRule("100% {transform: translate(" + x + " "+ "-430);}");
-				$('#left-bullet').css('transform', 'translate(' + x +'px,'+ y +'px)');
-				$('#right-bullet').css('transform', 'translate(' + x +'px,'+ y +'px)');
-				$('#left-bullet').css("display", "block");
-				$('#right-bullet').css("display", "block");
-				shoot();
-				
+				var bulletY = $("#right-bullet").css("transform");
+				bulletY = parseFloat(bulletY.split(" ")[5]);
+				if(isNaN(bulletY)){
+					bulletFrameChange(x,y);
+					$('#left-bullet').css("display", "block");
+					$('#right-bullet').css("display", "block");
+					$('#left-bullet').css('animationPlayState', 'running');
+					$('#right-bullet').css('animationPlayState', 'running');
+					shoot();
+				}
 				break;
 			case 37:	//left
 				if(x <= -150){
