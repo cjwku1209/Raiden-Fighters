@@ -1,9 +1,11 @@
 function start(){
-	console.log("clicked");
-    $("#main").css("display", "block");
-    $("#start-Page").css("display","none");
-	// setTimeout(countdown, 1000);
+    console.log("clicked");
+    //Transition effect
+    $("#start-Page").fadeOut(300);
+
+    //Wait until the effect is shown
+    setTimeout(function(){
+        $("#start-Page").css("display","none");
+        $("#main").css("display","block");
+    }, 250);
 }
-
-
-
