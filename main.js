@@ -1,6 +1,6 @@
 var timeRemaining = 300;
 var boolLaser = false;
-var boolRapidFire = false;
+var boolRapidFire = true;
 
 function countdown() {
 	// Decrease the remaining time
@@ -72,6 +72,14 @@ $(document).ready(function() {
 		console.log(e.keyCode);
 		switch (e.keyCode) {
 			case 32:	//space
+				if(boolRapidFire == true){
+					$("#right-bullet").css("animationDuration", "1s");
+					$("#left-bullet").css("animationDuration", "1s");
+				}
+				else{
+					$("#right-bullet").css("animationDuration", "2s");
+					$("#left-bullet").css("animationDuration", "2s");
+				}
 				var shootYcor = $("#right-bullet").css("transform");
 				shootYcor = parseFloat(shootYcor.split(" ")[5]);
 				if(isNaN(shootYcor) && boolLaser == false){
