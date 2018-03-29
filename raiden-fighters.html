@@ -7,8 +7,18 @@
     <link rel="stylesheet" href="startPage.css" >
     <link rel="stylesheet" href="raiden-fighters.css" >
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-    <style id="bullet">
+    <style id="bullet-style">
         @keyframes bullet-animation {
+            from {
+                transform: translate(0px, 0px);
+            }
+            to {
+                transform: translate(0px, -430px);
+            }
+        }
+    </style>
+    <style id="laser-style">
+        @keyframes laser-animation {
             from {
                 transform: translate(0px, 0px);
             }
@@ -128,9 +138,9 @@
                     </rect>
                 </svg>
 
-                <!--lazer-->
+                <!--laser-->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
-                    <rect id="lazer" height="50" width="10" y="390" x="170" stroke="none" fill="url(#main-lazer-color)">
+                    <rect id="laser" height="50" width="10" y="390" x="170" stroke="none" fill="url(#main-lazer-color)">
                         <!--<animate attributeName="y" values="390;200" dur="2s" repeatCount="indefinite" />-->
                     </rect>
                 </svg>

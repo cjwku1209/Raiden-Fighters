@@ -24,7 +24,7 @@ function shoot() {
 }
 
 function bulletFrameChange(x, y) {
-	var styles = document.getElementById('bullet');
+	var styles = document.getElementById('bullet-style');
 	var str = "@keyframes bullet-animation { from { transform: translate(" + x + "px, " + y + "px);}" + " to { transform: translate(" + x + "px, -430px);}}";
 	styles.innerText= str;
 }
