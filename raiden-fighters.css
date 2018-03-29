@@ -18,4 +18,9 @@
 
 #laser {
     display: none;
+    animation-name: laser-animation;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
 }
