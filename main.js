@@ -45,6 +45,7 @@ function generateEnemyTypeOne(){
 
 function randomEnemyTypeGenerator(){
 	var typeNum = Math.floor(Math.random() * (3)) + 1;
+	console.log(typeNum);
 	switch (typeNum){
 		case 1:
 			generateEnemyTypeOne();
@@ -54,7 +55,7 @@ function randomEnemyTypeGenerator(){
 			$('#enemy-type1-1').css('animationPlayState', 'running');
 			$('#enemy-type1-2').css('animationPlayState', 'running');
 			$('#enemy-type1-3').css('animationPlayState', 'running');
-			enemyTypeOneDropBomb();
+			// enemyTypeOneDropBomb();
 			break;
 		case 2:
 			break;
@@ -64,16 +65,32 @@ function randomEnemyTypeGenerator(){
 }
 
 function enemyTypeOneDropBomb() {
-	if(isNaN(parseFloat($('#bomb1-1').css("transform").split(" ")[5]))){
+	var styles = document.getElementById('bomb1-style');
+	if($('#enemy-type1-1').css("animation-play-state")=="running" && $('#bomb1-1').css("animation-play-state")=="paused"){
+		var bomb1X= parseFloat($('#enemy-type1-1').css("transform").split(" ")[4]);
+		var bomb1Y= parseFloat($('#enemy-type1-1').css("transform").split(" ")[5]);
+		var str = "@keyframes bomb1-animation { from { transform: translate(" + bomb1X + "px, " + bomb1Y + "px);}" + " to { transform: translate(" + bomb1X + "px, 0px);}}";
+		styles.innerText= str;
 		$('#bomb1-1').css("display", "block");
 		$('#bomb1-1').css('animationPlayState', 'running');
+
 	}
-	if(isNaN(parseFloat($('#bomb1-2').css("transform").split(" ")[5]))){
+	if($('#enemy-type1-2').css("animation-play-state")=="running" && $('#bomb1-2').css("animation-play-state")=="paused"){
+		var bomb2X= parseFloat($('#enemy-type1-2').css("transform").split(" ")[4]);
+		var bomb2Y= parseFloat($('#enemy-type1-2').css("transform").split(" ")[5]);
+		var str = "@keyframes bomb1-animation { from { transform: translate(" + bomb2X + "px, " + bomb2Y + "px);}" + " to { transform: translate(" + bomb2X + "px, 0px);}}";
+		styles.innerText= str;
+
 		$('#bomb1-2').css("display", "block");
 		$('#bomb1-2').css('animationPlayState', 'running');
 
 	}
-	if(isNaN(parseFloat($('#bomb1-3').css("transform").split(" ")[5]))){
+	if($('#enemy-type1-3').css("animation-play-state")=="running" && $('#bomb1-3').css("animation-play-state")=="paused"){
+		var bomb3X= parseFloat($('#enemy-type1-3').css("transform").split(" ")[4]);
+		var bomb3Y= parseFloat($('#enemy-type1-3').css("transform").split(" ")[5]);
+		var str = "@keyframes bomb1-animation { from { transform: translate(" + bomb3X + "px, " + bomb3Y + "px);}" + " to { transform: translate(" + bomb3X + "px, 0px);}}";
+		styles.innerText= str;
+
 		$('#bomb1-3').css("display", "block");
 		$('#bomb1-3').css('animationPlayState', 'running');
 	}
@@ -84,19 +101,21 @@ function gameOver(){
 
 }
 
-
-$(document).ready(function() {
+function  mainGame() {
 	randomEnemyTypeGenerator();
 	setInterval(randomEnemyTypeGenerator, 6000);
-    var x = 0;
-    var y = 0;
 
-	var dropSecond = Math.floor(Math.random() * (3)) + 1;
-	setTimeout(enemyTypeOneDropBomb(), dropSecond);
+	var dropSecond = (Math.floor(Math.random() * (3)) + 1)*500;
+	setInterval(enemyTypeOneDropBomb, dropSecond);
+}
 
+$(document).ready(function() {
+	var x = 0;
+	var y = 0;
     $('#start-button').click(function() {
         start();
         setTimeout(countdown, 1000);
+        mainGame();
     });
 
     $("#left-bullet").on("animationiteration", function() {
@@ -165,7 +184,7 @@ $(document).ready(function() {
     window.addEventListener('keydown', function (e) {
         // console.log(e.keyCode);
         switch (e.keyCode) {
-            case 32:	//space
+			case 32:	//space
 				var shootYcor = $("#right-bullet").css("transform");
 				shootYcor = parseFloat(shootYcor.split(" ")[5]);
 				var laserYcor = $("#laser").css("transform");

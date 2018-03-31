@@ -25,11 +25,6 @@
     animation-play-state: paused;
 }
 
-
-.bomb1{
-    display: none;
-}
-
 #player {
     position: relative;
 }
@@ -77,31 +72,41 @@
     display: none;
 }
 
-#bomb2-1 {
+#bomb1-1 {
     display: none;
     animation-name: bomb1-animation;
-    animation-duration: 6s;
+    animation-duration: 2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-play-state: paused;
+}
+
+#bomb1-2 {
+    display: none;
+    animation-name: bomb1-animation;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+}
+
+#bomb1-3 {
+    display: none;
+    animation-name: bomb1-animation;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+}
+
+#bomb2-1 {
+    display: none;
 }
 
 #bomb2-2 {
     display: none;
-    animation-name: bomb1-animation;
-    animation-duration: 6s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-play-state: paused;
 }
 
 #bomb2-3 {
     display: none;
-    animation-name: bomb1-animation;
-    animation-duration: 6s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-play-state: paused;
 }
-
-
