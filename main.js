@@ -1,6 +1,6 @@
 var timeRemaining = 300;
 var boolLaser = false;
-var boolRapidFire = false;
+var boolRapidFire = true;
 
 function countdown() {
     // Decrease the remaining time
@@ -45,7 +45,6 @@ function generateEnemyTypeOne(){
 
 function randomEnemyTypeGenerator(){
 	var typeNum = Math.floor(Math.random() * (3)) + 1;
-	console.log(typeNum);
 	switch (typeNum){
 		case 1:
 			generateEnemyTypeOne();
@@ -164,21 +163,24 @@ $(document).ready(function() {
 	});
 
     window.addEventListener('keydown', function (e) {
-        console.log(e.keyCode);
+        // console.log(e.keyCode);
         switch (e.keyCode) {
             case 32:	//space
-                if(boolRapidFire == true){
-                    $("#right-bullet").css("animationDuration", "1s");
-                    $("#left-bullet").css("animationDuration", "1s");
-                }
-                else{
-                    $("#right-bullet").css("animationDuration", "2s");
-                    $("#left-bullet").css("animationDuration", "2s");
-                }
-                var shootYcor = $("#right-bullet").css("transform");
-                shootYcor = parseFloat(shootYcor.split(" ")[5]);
+				var shootYcor = $("#right-bullet").css("transform");
+				shootYcor = parseFloat(shootYcor.split(" ")[5]);
 				var laserYcor = $("#laser").css("transform");
 				laserYcor = parseFloat(laserYcor.split(" ")[5]);
+				var animationDuration = (430+y)/430;
+                if(boolRapidFire == true){
+					$("#right-bullet").css("animationDuration", animationDuration + "s");
+                    $("#left-bullet").css("animationDuration", animationDuration + "s");
+                }
+                else{
+					animationDuration=animationDuration*2;
+					console.log(animationDuration);
+					$("#right-bullet").css("animationDuration", animationDuration + "s");
+					$("#left-bullet").css("animationDuration", animationDuration + "s");
+                }
                 if(isNaN(shootYcor) && boolLaser == false){
                     bulletFrameChange(x,y);
                     $('#left-bullet').css("display", "block");
