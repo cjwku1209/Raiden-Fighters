@@ -1,5 +1,5 @@
 var timeRemaining = 300;
-var boolLaser = true;
+var boolLaser = false;
 var boolRapidFire = false;
 
 function countdown() {
@@ -35,7 +35,51 @@ function laserFrameChange(x, y) {
     styles.innerText= str;
 }
 
+function generateEnemyTypeOne(){
+	var y1 = Math.round(Math.random()*-230)-120;
+	var y2 = Math.round(y1 + 120);
+	var styles = document.getElementById('enemy-type1-style');
+	var str = "@keyframes enemy-type1-animation { from { transform: translate(205px, " + y1 + "px);}" + " to { transform: translate(-345px, " + y2 +"px);}}";
+	styles.innerText= str;
+}
 
+function randomEnemyTypeGenerator(){
+	var typeNum = Math.floor(Math.random() * (3)) + 1;
+	console.log(typeNum);
+	switch (typeNum){
+		case 1:
+			generateEnemyTypeOne();
+			$('#enemy-type1-1').css("display", "block");
+			$('#enemy-type1-2').css("display", "block");
+			$('#enemy-type1-3').css("display", "block");
+			$('#enemy-type1-1').css('animationPlayState', 'running');
+			$('#enemy-type1-2').css('animationPlayState', 'running');
+			$('#enemy-type1-3').css('animationPlayState', 'running');
+			enemyTypeOneDropBomb();
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+	}
+}
+
+function enemyTypeOneDropBomb() {
+	if(isNaN(parseFloat($('#bomb1-1').css("transform").split(" ")[5]))){
+		$('#bomb1-1').css("display", "block");
+		$('#bomb1-1').css('animationPlayState', 'running');
+	}
+	if(isNaN(parseFloat($('#bomb1-2').css("transform").split(" ")[5]))){
+		$('#bomb1-2').css("display", "block");
+		$('#bomb1-2').css('animationPlayState', 'running');
+
+	}
+	if(isNaN(parseFloat($('#bomb1-3').css("transform").split(" ")[5]))){
+		$('#bomb1-3').css("display", "block");
+		$('#bomb1-3').css('animationPlayState', 'running');
+	}
+
+}
 
 function gameOver(){
 
@@ -43,30 +87,82 @@ function gameOver(){
 
 
 $(document).ready(function() {
+	randomEnemyTypeGenerator();
+	setInterval(randomEnemyTypeGenerator, 6000);
     var x = 0;
     var y = 0;
+
+	var dropSecond = Math.floor(Math.random() * (3)) + 1;
+	setTimeout(enemyTypeOneDropBomb(), dropSecond);
+
     $('#start-button').click(function() {
         start();
         setTimeout(countdown, 1000);
     });
+
     $("#left-bullet").on("animationiteration", function() {
         $("#left-bullet").css({
             "animationPlayState": "paused",
             'display': 'none'
         });
     });
+
     $("#right-bullet").on("animationiteration", function() {
         $("#right-bullet").css({
             "animationPlayState": "paused",
             'display': 'none'
         });
     });
+
     $("#laser").on("animationiteration", function() {
         $("#laser").css({
             "animationPlayState": "paused",
             'display': 'none'
         });
     });
+
+	$("#enemy-type1-1").on("animationiteration", function() {
+		$("#enemy-type1-1").css({
+			"animationPlayState": "paused",
+			'display': 'none'
+		});
+	});
+
+	$("#enemy-type1-2").on("animationiteration", function() {
+		$("#enemy-type1-2").css({
+			"animationPlayState": "paused",
+			'display': 'none'
+		});
+	});
+
+	$("#enemy-type1-3").on("animationiteration", function() {
+		$("#enemy-type1-3").css({
+			"animationPlayState": "paused",
+			'display': 'none'
+		});
+	});
+
+	$("#bomb1-1").on("animationiteration", function() {
+		$("#bomb1-1").css({
+			"animationPlayState": "paused",
+			'display': 'none'
+		});
+	});
+
+	$("#bomb1-2").on("animationiteration", function() {
+		$("#bomb1-2").css({
+			"animationPlayState": "paused",
+			'display': 'none'
+		});
+	});
+
+	$("#bomb1-3").on("animationiteration", function() {
+		$("#bomb1-3").css({
+			"animationPlayState": "paused",
+			'display': 'none'
+		});
+	});
+
     window.addEventListener('keydown', function (e) {
         console.log(e.keyCode);
         switch (e.keyCode) {
