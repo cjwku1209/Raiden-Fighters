@@ -87,8 +87,6 @@
 }
 
 #meteor1 {
-    /*display: none;*/
-    /*transform: translate(-150px, -400px); !* x= +-150, y= -500*!*/
     display: none;
     animation-name: meteor1-animation;
     animation-duration: 2s;
@@ -109,6 +107,17 @@
 #meteor3 {
     display: none;
     animation-name: meteor3-animation;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+}
+
+#space-bomb {
+    /*display: none;*/
+    /*transform: translate(180px, -280px); !* x= -200 y= -280*!*/
+    display: none;
+    animation-name: space-bomb-animation;
     animation-duration: 2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;

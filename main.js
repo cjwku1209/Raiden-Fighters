@@ -59,30 +59,57 @@ function generateEnemyTypeTwo() {
 
 }
 
+function generateEnemyTypeThree() {
+	var y1 = Math.round(Math.random()*-280);
+	var y2 = Math.round(y1 - 120);
+	var styles = document.getElementById('space-bomb-style');
+	var str = "@keyframes space-bomb-animation { from { transform: translate(-200px, " + y1 + "px);}" + " to { transform: translate(200px, " + y2 +"px);}}";
+	styles.innerText= str;
+}
+
 function randomEnemyTypeGenerator(){
 	var typeNum = Math.floor(Math.random() * (3)) + 1;
-	console.log(typeNum);
+
 	switch (typeNum){
 		case 1:
-			generateEnemyTypeOne();
-			$('#enemy-type1-1').css("display", "block");
-			$('#enemy-type1-2').css("display", "block");
-			$('#enemy-type1-3').css("display", "block");
-			$('#enemy-type1-1').css('animationPlayState', 'running');
-			$('#enemy-type1-2').css('animationPlayState', 'running');
-			$('#enemy-type1-3').css('animationPlayState', 'running');
+			if($('#enemy-type1-1').css("animation-play-state")=="running" && $('#enemy-type1-2').css("animation-play-state")=="running" && $('#enemy-type1-3').css("animation-play-state")=="running"){
+				randomEnemyTypeGenerator();
+			}
+			else{
+				generateEnemyTypeOne();
+				$('#enemy-type1-1').css("display", "block");
+				$('#enemy-type1-2').css("display", "block");
+				$('#enemy-type1-3').css("display", "block");
+				$('#enemy-type1-1').css('animationPlayState', 'running');
+				$('#enemy-type1-2').css('animationPlayState', 'running');
+				$('#enemy-type1-3').css('animationPlayState', 'running');
+			}
+
 			// enemyTypeOneDropBomb();
 			break;
 		case 2:
-			generateEnemyTypeTwo();
-			$('#meteor1').css("display", "block");
-			$('#meteor2').css("display", "block");
-			$('#meteor3').css("display", "block");
-			$('#meteor1').css('animationPlayState', 'running');
-			$('#meteor2').css('animationPlayState', 'running');
-			$('#meteor3').css('animationPlayState', 'running');
+			if($('#meteor1').css("animation-play-state")=="running" && $('#meteor2').css("animation-play-state")=="running" && $('#meteor3').css("animation-play-state")=="running"){
+				randomEnemyTypeGenerator();
+			}
+			else{
+				generateEnemyTypeTwo();
+				$('#meteor1').css("display", "block");
+				$('#meteor2').css("display", "block");
+				$('#meteor3').css("display", "block");
+				$('#meteor1').css('animationPlayState', 'running');
+				$('#meteor2').css('animationPlayState', 'running');
+				$('#meteor3').css('animationPlayState', 'running');
+			}
 			break;
 		case 3:
+			if($('#space-bomb').css("animation-play-state")=="running"){
+				randomEnemyTypeGenerator();
+			}
+			else{
+				generateEnemyTypeThree();
+				$('#space-bomb').css("display", "block");
+				$('#space-bomb').css('animationPlayState', 'running');
+			}
 			break;
 	}
 }
@@ -225,6 +252,13 @@ $(document).ready(function() {
 
 	$("#meteor3").on("animationiteration", function() {
 		$("#meteor3").css({
+			"animationPlayState": "paused",
+			'display': 'none'
+		});
+	});
+
+	$("#space-bomb").on("animationiteration", function() {
+		$("#space-bomb").css({
 			"animationPlayState": "paused",
 			'display': 'none'
 		});
