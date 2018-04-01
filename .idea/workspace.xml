@@ -4,7 +4,6 @@
     <list default="true" id="cdb85ffe-4b5a-4f36-87d0-d76b4fadb451" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
       <change beforePath="$PROJECT_DIR$/raiden-fighters.css" afterPath="$PROJECT_DIR$/raiden-fighters.css" />
-      <change beforePath="$PROJECT_DIR$/raiden-fighters.html" afterPath="$PROJECT_DIR$/raiden-fighters.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,24 +27,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="raiden-fighters.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="raiden-fighters.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/raiden-fighters.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="123" selection-end-column="33" />
+            <state relative-caret-position="817">
+              <caret line="120" column="25" lean-forward="false" selection-start-line="120" selection-start-column="25" selection-end-line="120" selection-end-column="25" />
               <folding>
-                <marker date="1522564834331" expanded="true" signature="700:718" ph="..." />
-                <marker date="1522564834331" expanded="true" signature="942:960" ph="..." />
+                <marker date="1522572591933" expanded="true" signature="700:718" ph="..." />
+                <marker date="1522572591933" expanded="true" signature="942:960" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="745">
-              <caret line="111" column="13" lean-forward="false" selection-start-line="111" selection-start-column="13" selection-end-line="111" selection-end-column="13" />
+            <state relative-caret-position="465">
+              <caret line="164" column="46" lean-forward="false" selection-start-line="164" selection-start-column="46" selection-end-line="164" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -82,6 +81,8 @@
       <find>boss</find>
       <find>translate</find>
       <find>bos</find>
+      <find>shoot</find>
+      <find>switch</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -94,8 +95,8 @@
         <option value="$PROJECT_DIR$/startPage.js" />
         <option value="$PROJECT_DIR$/startPage.css" />
         <option value="$PROJECT_DIR$/raiden-fighters.html" />
-        <option value="$PROJECT_DIR$/raiden-fighters.css" />
         <option value="$PROJECT_DIR$/main.js" />
+        <option value="$PROJECT_DIR$/raiden-fighters.css" />
       </list>
     </option>
   </component>
@@ -216,12 +217,12 @@
       <updated>1522199124445</updated>
       <workItem from="1522199126775" duration="6478000" />
       <workItem from="1522244172583" duration="15309000" />
-      <workItem from="1522408080002" duration="16552000" />
+      <workItem from="1522408080002" duration="18675000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51456000" />
+    <option name="totallyTimeSpent" value="53579000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -269,8 +270,8 @@
         <state relative-caret-position="375">
           <caret line="25" column="1" lean-forward="false" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
           <folding>
-            <marker date="1522564834331" expanded="true" signature="700:718" ph="..." />
-            <marker date="1522564834331" expanded="true" signature="942:960" ph="..." />
+            <marker date="1522572591933" expanded="true" signature="700:718" ph="..." />
+            <marker date="1522572591933" expanded="true" signature="942:960" ph="..." />
           </folding>
         </state>
       </provider>
@@ -375,8 +376,8 @@
         <state relative-caret-position="375">
           <caret line="25" column="1" lean-forward="false" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
           <folding>
-            <marker date="1522564834331" expanded="true" signature="700:718" ph="..." />
-            <marker date="1522564834331" expanded="true" signature="942:960" ph="..." />
+            <marker date="1522572591933" expanded="true" signature="700:718" ph="..." />
+            <marker date="1522572591933" expanded="true" signature="942:960" ph="..." />
           </folding>
         </state>
       </provider>
@@ -543,8 +544,8 @@
         <state relative-caret-position="57">
           <caret line="3" column="4" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="22" />
           <folding>
-            <marker date="1522564834331" expanded="true" signature="700:718" ph="..." />
-            <marker date="1522564834331" expanded="true" signature="942:960" ph="..." />
+            <marker date="1522572591933" expanded="true" signature="700:718" ph="..." />
+            <marker date="1522572591933" expanded="true" signature="942:960" ph="..." />
           </folding>
         </state>
       </provider>
@@ -651,22 +652,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/raiden-fighters.css">
+    <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="123" selection-end-column="33" />
-          <folding>
-            <marker date="1522564834331" expanded="true" signature="700:718" ph="..." />
-            <marker date="1522564834331" expanded="true" signature="942:960" ph="..." />
-          </folding>
+        <state relative-caret-position="465">
+          <caret line="164" column="46" lean-forward="false" selection-start-line="164" selection-start-column="46" selection-end-line="164" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.js">
+    <entry file="file://$PROJECT_DIR$/raiden-fighters.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="745">
-          <caret line="111" column="13" lean-forward="false" selection-start-line="111" selection-start-column="13" selection-end-line="111" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="817">
+          <caret line="120" column="25" lean-forward="false" selection-start-line="120" selection-start-column="25" selection-end-line="120" selection-end-column="25" />
+          <folding>
+            <marker date="1522572591933" expanded="true" signature="700:718" ph="..." />
+            <marker date="1522572591933" expanded="true" signature="942:960" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -18,11 +18,6 @@ function countdown() {
     }
 }
 
-function shoot() {
-    $('#left-bullet').css("animationPlayState", "running");
-
-}
-
 function bulletFrameChange(x, y) {
     var styles = document.getElementById('bullet-style');
     var str = "@keyframes bullet-animation { from { transform: translate(" + x + "px, " + y + "px);}" + " to { transform: translate(" + x + "px, -430px);}}";
@@ -72,44 +67,29 @@ function randomEnemyTypeGenerator(){
 
 	switch (typeNum){
 		case 1:
-			if($('#enemy-type1-1').css("animation-play-state")=="running" && $('#enemy-type1-2').css("animation-play-state")=="running" && $('#enemy-type1-3').css("animation-play-state")=="running"){
-				randomEnemyTypeGenerator();
-			}
-			else{
-				generateEnemyTypeOne();
-				$('#enemy-type1-1').css("display", "block");
-				$('#enemy-type1-2').css("display", "block");
-				$('#enemy-type1-3').css("display", "block");
-				$('#enemy-type1-1').css('animationPlayState', 'running');
-				$('#enemy-type1-2').css('animationPlayState', 'running');
-				$('#enemy-type1-3').css('animationPlayState', 'running');
-			}
+			generateEnemyTypeOne();
+			$('#enemy-type1-1').css("display", "block");
+			$('#enemy-type1-2').css("display", "block");
+			$('#enemy-type1-3').css("display", "block");
+			$('#enemy-type1-1').css('animationPlayState', 'running');
+			$('#enemy-type1-2').css('animationPlayState', 'running');
+			$('#enemy-type1-3').css('animationPlayState', 'running');
+			break;
 
-			// enemyTypeOneDropBomb();
-			break;
 		case 2:
-			if($('#meteor1').css("animation-play-state")=="running" && $('#meteor2').css("animation-play-state")=="running" && $('#meteor3').css("animation-play-state")=="running"){
-				randomEnemyTypeGenerator();
-			}
-			else{
-				generateEnemyTypeTwo();
-				$('#meteor1').css("display", "block");
-				$('#meteor2').css("display", "block");
-				$('#meteor3').css("display", "block");
-				$('#meteor1').css('animationPlayState', 'running');
-				$('#meteor2').css('animationPlayState', 'running');
-				$('#meteor3').css('animationPlayState', 'running');
-			}
+			generateEnemyTypeTwo();
+			$('#meteor1').css("display", "block");
+			$('#meteor2').css("display", "block");
+			$('#meteor3').css("display", "block");
+			$('#meteor1').css('animationPlayState', 'running');
+			$('#meteor2').css('animationPlayState', 'running');
+			$('#meteor3').css('animationPlayState', 'running');
 			break;
+
 		case 3:
-			if($('#space-bomb').css("animation-play-state")=="running"){
-				randomEnemyTypeGenerator();
-			}
-			else{
-				generateEnemyTypeThree();
-				$('#space-bomb').css("display", "block");
-				$('#space-bomb').css('animationPlayState', 'running');
-			}
+			generateEnemyTypeThree();
+			$('#space-bomb').css("display", "block");
+			$('#space-bomb').css('animationPlayState', 'running');
 			break;
 	}
 }
@@ -147,9 +127,33 @@ function enemyTypeOneDropBomb() {
 
 }
 
-// function bossLevel() {
-//
-// }
+//Todo check if bullet hit enemy
+function checkHit() {
+	console.log("inside");
+	var bulletX = parseFloat($("#right-bullet").css("transform").split(" ")[4]);
+	var bulletY = parseFloat($("#right-bullet").css("transform").split(" ")[5]);
+	var laserX = parseFloat($("#laser").css("transform").split(" ")[4]);
+	var laserY = parseFloat($("#laser").css("transform").split(" ")[5]);
+	var meteor1X = parseFloat($("#meteor1").css("transform").split(" ")[4]);
+	var meteor1Y = parseFloat($("#meteor1").css("transform").split(" ")[5]);
+	var meteor2X = parseFloat($("#meteor2").css("transform").split(" ")[4]);
+	var meteor2Y = parseFloat($("#meteor2").css("transform").split(" ")[5]);
+	var meteor3X = parseFloat($("#meteor3").css("transform").split(" ")[4]);
+	var meteor3Y = parseFloat($("#meteor3").css("transform").split(" ")[5]);
+
+	//Todo check if bullet hit meteor
+	if(((meteor1X - 10) <= bulletX <= (meteor1X + 10)) && ((meteor1Y - 10) >= bulletY >= (meteor1Y + 10))){
+		console.log("hit");
+	}
+	if(((meteor2X - 10) <= bulletX <= (meteor2X + 10)) && ((meteor1Y - 10) >= bulletY >= (meteor2Y + 10))){
+		console.log("hit");
+	}
+	if(((meteor3X - 10) <= bulletX <= (meteor3X + 10)) && ((meteor3Y - 10) >= bulletY >= (meteor3Y + 10))){
+		console.log("hit");
+	}
+
+}
+
 
 function gameOver(){
 
@@ -158,9 +162,10 @@ function gameOver(){
 function  mainGame() {
 	// $('#enemy-type2-1').css('transform', 'translate(-40px, -400px)');
 	randomEnemyTypeGenerator();
-	setInterval(randomEnemyTypeGenerator, 6000);
+	setInterval(randomEnemyTypeGenerator, 5000);
 	var dropSecond = (Math.floor(Math.random() * (3)) + 1)*500;
 	setInterval(enemyTypeOneDropBomb, dropSecond);
+	requestAnimationFrame(checkHit); // not working help check
 
 }
 
@@ -289,7 +294,6 @@ $(document).ready(function() {
                     $('#right-bullet').css("display", "block");
                     $('#left-bullet').css('animationPlayState', 'running');
                     $('#right-bullet').css('animationPlayState', 'running');
-                    shoot();
                 }
                 else if (isNaN(laserYcor) && boolLaser == true){
                     laserFrameChange(x,y);
