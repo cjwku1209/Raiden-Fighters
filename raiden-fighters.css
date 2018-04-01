@@ -30,46 +30,33 @@
 }
 
 #enemy-type1-1{
-    /*display: none;*/
+    display: none;
     display: none;
     animation-name: enemy-type1-animation;
-    animation-duration: 6s;
+    animation-duration: 8s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-play-state: paused;
 }
 
 #enemy-type1-2{
-    /*display: none;*/
+    display: none;
     display: none;
     animation-name: enemy-type1-animation;
-    animation-duration: 6s;
+    animation-duration: 8s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-play-state: paused;
 }
 
 #enemy-type1-3{
-    /*display: none;*/
+    display: none;
     display: none;
     animation-name: enemy-type1-animation;
-    animation-duration: 6s;
+    animation-duration: 8s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-play-state: paused;
-}
-
-#enemy-type2-1 {
-    display: none;
-
-}
-
-#enemy-type2-2 {
-    display: none;
-}
-
-#enemy-type2-3 {
-    display: none;
 }
 
 #bomb1-1 {
@@ -99,14 +86,35 @@
     animation-play-state: paused;
 }
 
-#bomb2-1 {
+#meteor1 {
+    /*display: none;*/
+    /*transform: translate(-150px, -400px); !* x= +-150, y= -500*!*/
     display: none;
+    animation-name: meteor1-animation;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
 }
 
-#bomb2-2 {
+#meteor2 {
     display: none;
+    animation-name: meteor2-animation;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
 }
 
-#bomb2-3 {
+#meteor3 {
     display: none;
+    animation-name: meteor3-animation;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
 }
+/*#boss {*/
+    /*display: block;*/
+    /*transform: translate(20px, 100px);*/
+/*}*/

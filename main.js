@@ -43,6 +43,22 @@ function generateEnemyTypeOne(){
 	styles.innerText= str;
 }
 
+function generateEnemyTypeTwo() {
+	var x1 = Math.round(Math.random()*300)-150;
+	var x2 = Math.round(Math.random()*300)-150;
+	var x3 = Math.round(Math.random()*300)-150;
+	var styles1 = document.getElementById('meteor-style1');
+	var str1 = "@keyframes meteor1-animation { from { transform: translate(" + x1 + "px, -500px);}" + " to { transform: translate(" + x1 +"px , 0px);}}";
+	styles1.innerText= str1;
+	var styles2 = document.getElementById('meteor-style2');
+	var str2 = "@keyframes meteor2-animation { from { transform: translate(" + x2 + "px, -500px);}" + " to { transform: translate(" + x2 +"px , 0px);}}";
+	styles2.innerText= str2;
+	var styles3 = document.getElementById('meteor-style3');
+	var str3 = "@keyframes meteor3-animation{ from { transform: translate(" + x3 + "px, -500px);}" + " to { transform: translate(" + x3 +"px , 0px);}}";
+	styles3.innerText= str3;
+
+}
+
 function randomEnemyTypeGenerator(){
 	var typeNum = Math.floor(Math.random() * (3)) + 1;
 	console.log(typeNum);
@@ -58,6 +74,13 @@ function randomEnemyTypeGenerator(){
 			// enemyTypeOneDropBomb();
 			break;
 		case 2:
+			generateEnemyTypeTwo();
+			$('#meteor1').css("display", "block");
+			$('#meteor2').css("display", "block");
+			$('#meteor3').css("display", "block");
+			$('#meteor1').css('animationPlayState', 'running');
+			$('#meteor2').css('animationPlayState', 'running');
+			$('#meteor3').css('animationPlayState', 'running');
 			break;
 		case 3:
 			break;
@@ -97,16 +120,21 @@ function enemyTypeOneDropBomb() {
 
 }
 
+// function bossLevel() {
+//
+// }
+
 function gameOver(){
 
 }
 
 function  mainGame() {
+	// $('#enemy-type2-1').css('transform', 'translate(-40px, -400px)');
 	randomEnemyTypeGenerator();
 	setInterval(randomEnemyTypeGenerator, 6000);
-
 	var dropSecond = (Math.floor(Math.random() * (3)) + 1)*500;
 	setInterval(enemyTypeOneDropBomb, dropSecond);
+
 }
 
 $(document).ready(function() {
@@ -176,6 +204,27 @@ $(document).ready(function() {
 
 	$("#bomb1-3").on("animationiteration", function() {
 		$("#bomb1-3").css({
+			"animationPlayState": "paused",
+			'display': 'none'
+		});
+	});
+
+	$("#meteor1").on("animationiteration", function() {
+		$("#meteor1").css({
+			"animationPlayState": "paused",
+			'display': 'none'
+		});
+	});
+
+	$("#meteor2").on("animationiteration", function() {
+		$("#meteor2").css({
+			"animationPlayState": "paused",
+			'display': 'none'
+		});
+	});
+
+	$("#meteor3").on("animationiteration", function() {
+		$("#meteor3").css({
 			"animationPlayState": "paused",
 			'display': 'none'
 		});
