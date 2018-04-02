@@ -3,7 +3,6 @@ var boolLaser = false;
 var boolRapidFire = false;
 
 function countdown() {
-	console.log(timeRemaining);
     // Decrease the remaining time
     timeRemaining--;
 
@@ -34,6 +33,23 @@ function laserFrameChange(x, y) {
     var styles = document.getElementById('laser-style');
     var str = "@keyframes laser-animation { from { transform: translate(" + x + "px, " + y + "px);}" + " to { transform: translate(" + x + "px, -430px);}}";
     styles.innerText= str;
+}
+
+function generateItemTypeOne(){
+    var x = Math.round(Math.random()*300) - 150;
+    var style = document.getElementById('laser-item-style');
+    var str = "@keyframes laser-item-animation { from { transform: translate(" + x + "px, -200px);}" + " to { transform: translate(" + x +"px , 340px);}}";
+    style.innerText= str;
+    console.log("move at " +x);
+}
+
+
+function generateItemTypeTwo(){
+    var x = Math.round(Math.random()*300) - 150;
+    var style = document.getElementById('rapid-fire-item-style');
+    var str = "@keyframes rapid-fire-item-animation { from { transform: translate(" + x + "px, -200px);}" + " to { transform: translate(" + x +"px , 340px);}}";
+    style.innerText= str;
+    console.log("move at " +x);
 }
 
 function generateEnemyTypeOne(){
@@ -67,7 +83,23 @@ function generateEnemyTypeThree() {
 	var str = "@keyframes space-bomb-animation { from { transform: translate(-200px, " + y1 + "px);}" + " to { transform: translate(200px, " + y2 +"px);}}";
 	styles.innerText= str;
 }
+function randomFiringModeItemGenerator(){
+    var typeNum = Math.floor(Math.random() * (2)) + 1;
+    console.log("Generate item number " + typeNum);
+    switch (typeNum){
+        case 1:
+            generateItemTypeOne();
+            $('#laser-item').css("display", "block");
+            $('#laser-item').css('animationPlayState', 'running');
+            break;
 
+        case 2:
+            generateItemTypeTwo();
+            $('#rapid-fire-item').css("display", "block");
+            $('#rapid-fire-item').css('animationPlayState', 'running');
+            break;
+    }
+}
 function randomEnemyTypeGenerator(){
 	var typeNum = Math.floor(Math.random() * (3)) + 1;
 
@@ -164,7 +196,9 @@ function checkHit() {
 function  mainGame() {
 	// $('#enemy-type2-1').css('transform', 'translate(-40px, -400px)');
 	randomEnemyTypeGenerator();
+    randomFiringModeItemGenerator();
 	setInterval(randomEnemyTypeGenerator, 5000);
+    setInterval(randomFiringModeItemGenerator, 5000);
 	var dropSecond = (Math.floor(Math.random() * (3)) + 1)*500;
 	setInterval(enemyTypeOneDropBomb, dropSecond);
 	requestAnimationFrame(checkHit); // not working help check
@@ -276,6 +310,20 @@ $(document).ready(function() {
 			'display': 'none'
 		});
 	});
+
+    $("#laser-item").on("animationiteration", function() {
+        $("#laser-item").css({
+            "animationPlayState": "paused",
+            'display': 'none'
+        });
+    });
+
+    $("#rapid-fire-item").on("animationiteration", function() {
+        $("#rapid-fire-item").css({
+            "animationPlayState": "paused",
+            'display': 'none'
+        });
+    });
 
     window.addEventListener('keydown', function (e) {
         // console.log(e.keyCode);

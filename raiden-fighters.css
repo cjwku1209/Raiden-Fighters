@@ -113,12 +113,30 @@
     animation-play-state: paused;
 }
 
+#laser-item{
+    display: none;
+    animation-name: laser-item-animation;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+}
+
+#rapid-fire-item{
+    display: none;
+    animation-name: rapid-fire-item-animation;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+}
+
 #space-bomb {
     /*display: none;*/
     /*transform: translate(180px, -280px); !* x= -200 y= -280*!*/
     display: none;
     animation-name: space-bomb-animation;
-    animation-duration: 2s;
+    animation-duration: 3s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-play-state: paused;
