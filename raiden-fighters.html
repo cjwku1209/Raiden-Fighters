@@ -6,11 +6,12 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="startPage.js"></script>
     <script src="main.js"></script>
+    <script src="gameOver.js"></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="startPage.css">
-    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="raiden-fighters.css">
+    <link rel="stylesheet" href="gameOver.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
 
     <!--Bullet animation -->
@@ -268,7 +269,7 @@
                 <!--Time-->
                 <g id="time-container">
                     <text id="time-text" x="320" y="15" fill="white" font-size="15" text-anchor="middle">TIME: </text>
-                    <text id="time-value" x="320" y="30" fill="white" font-size="16" text-anchor="middle">300 </text>
+                    <text id="time-value" x="320" y="30" fill="white" font-size="16" text-anchor="middle">300</text>
                 </g>
 
                 <!--Lives-->
@@ -284,9 +285,24 @@
                     <path d="m44.737344,30.915223c-0.221366,-0.248064 -0.774106,-0.731667 -1.228311,-1.074672c-1.345774,-1.016302 -1.528935,-1.163381 -2.075347,-1.666519c-1.007345,-0.927566 -1.435148,-1.859468 -1.433682,-3.123053c0.000715,-0.616831 0.042759,-0.854477 0.215498,-1.218068c0.293066,-0.61686 0.724764,-1.075238 1.276692,-1.355584c0.390911,-0.198558 0.583707,-0.286775 1.236502,-0.290383c0.68287,-0.003773 0.826623,0.075847 1.228312,0.296522c0.488924,0.268601 0.992165,0.842647 1.096192,1.250422l0.064249,0.251858l0.158445,-0.346865c0.895363,-1.960114 3.753943,-1.930788 4.748744,0.048719c0.315578,0.627954 0.350225,1.968795 0.070389,2.724083c-0.365038,0.985246 -1.050663,1.736382 -2.635595,2.887417c-1.039427,0.75487 -2.215818,1.897006 -2.297711,2.057419c-0.095063,0.186212 -0.004535,0.029182 -0.424381,-0.441296l0,0l0.000004,0z" fill="#ff0000" stroke="null" id="svg_6"/>
                     <g stroke="null" id="svg_7"/>
                 </g>
-                <g id="svg_1" stroke="heart4">
+                <g stroke="null" id="heart4">
                     <path id="svg_8" d="m58.737344,30.915223c-0.221366,-0.248064 -0.774106,-0.731667 -1.228311,-1.074672c-1.345774,-1.016302 -1.528935,-1.163381 -2.075347,-1.666519c-1.007345,-0.927566 -1.435148,-1.859468 -1.433682,-3.123053c0.000715,-0.616831 0.042759,-0.854477 0.215498,-1.218068c0.293066,-0.61686 0.724764,-1.075238 1.276692,-1.355584c0.390911,-0.198558 0.583707,-0.286775 1.236502,-0.290383c0.68287,-0.003773 0.826623,0.075847 1.228312,0.296522c0.488924,0.268601 0.992165,0.842647 1.096192,1.250422l0.064249,0.251858l0.158445,-0.346865c0.895363,-1.960114 3.753943,-1.930788 4.748744,0.048719c0.315578,0.627954 0.350225,1.968795 0.070389,2.724083c-0.365038,0.985246 -1.050663,1.736382 -2.635595,2.887417c-1.039427,0.75487 -2.215818,1.897006 -2.297711,2.057419c-0.095063,0.186212 -0.004535,0.029182 -0.424381,-0.441296l0,0l0.000004,0z" fill="#ff0000" stroke="null"/>
                     <g id="svg_9" stroke="null"/>
+                </g>
+            </svg>
+        </div>
+        <!--Game Over Scene-->
+        <div id="gameOver">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+                <!--Space-->
+                <rect id="space" height="500" width="350" y="0" x="0" stroke="none" fill="#0F0F24"/>
+                <g id="time-container">
+                    <text id="game-over-score-text" x="175" y="15" fill="red" font-size="16" text-anchor="middle">Your final score: </text>
+                    <text id="game-over-score-value" x="175" y="30" fill="white" font-size="16" text-anchor="middle"></text>
+                </g>
+                <!--Restart button-->
+                <g id="restart-button" font-size="25">
+                    <text id="restart-text" x="87" y="250" fill="white" text-anchor="middle">Restart!</text>
                 </g>
             </svg>
         </div>

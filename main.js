@@ -3,11 +3,12 @@ var boolLaser = false;
 var boolRapidFire = false;
 
 function countdown() {
+	console.log(timeRemaining);
     // Decrease the remaining time
     timeRemaining--;
 
     // Continue the countdown if there is still time
-    if (timeRemaining > 0) {
+    if (timeRemaining >= 0) {
         $("#time-value").text(timeRemaining);
         setTimeout(countdown, 1000);
     }
@@ -16,6 +17,11 @@ function countdown() {
     else {
         gameOver();
     }
+}
+
+
+function generate(){
+
 }
 
 function bulletFrameChange(x, y) {
@@ -155,10 +161,6 @@ function checkHit() {
 }
 
 
-function gameOver(){
-
-}
-
 function  mainGame() {
 	// $('#enemy-type2-1').css('transform', 'translate(-40px, -400px)');
 	randomEnemyTypeGenerator();
@@ -174,6 +176,12 @@ $(document).ready(function() {
 	var y = 0;
     $('#start-button').click(function() {
         start();
+        setTimeout(countdown, 1000);
+        mainGame();
+    });
+
+    $('#restart-button').click(function() {
+        restart();
         setTimeout(countdown, 1000);
         mainGame();
     });

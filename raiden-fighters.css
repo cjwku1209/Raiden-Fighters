@@ -127,3 +127,7 @@
     /*display: block;*/
     /*transform: translate(20px, 100px);*/
 /*}*/
+
+#boss {
+    display: none;
+}
