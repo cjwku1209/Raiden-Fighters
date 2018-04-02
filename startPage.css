@@ -26,10 +26,6 @@ text {
     transform: translate(117px,-33px);
 }
 
-#player {
-    position: relative;
-}
-
 #game-instruction-text{
     font-size: 14px;
     fill: white;
