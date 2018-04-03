@@ -1,7 +1,8 @@
 var timeRemaining = 300;
 var boolLaser = false;
 var boolRapidFire = false;
-
+var RapidFireTimeout;
+var LaserTimeout;
 function countdown() {
     // Decrease the remaining time
     timeRemaining--;
@@ -19,10 +20,6 @@ function countdown() {
 }
 
 
-function generate(){
-
-}
-
 function bulletFrameChange(x, y) {
     var styles = document.getElementById('bullet-style');
     var str = "@keyframes bullet-animation { from { transform: translate(" + x + "px, " + y + "px);}" + " to { transform: translate(" + x + "px, -430px);}}";
@@ -38,18 +35,16 @@ function laserFrameChange(x, y) {
 function generateItemTypeOne(){
     var x = Math.round(Math.random()*300) - 150;
     var style = document.getElementById('laser-item-style');
-    var str = "@keyframes laser-item-animation { from { transform: translate(" + x + "px, -200px);}" + " to { transform: translate(" + x +"px , 340px);}}";
+    var str = "@keyframes laser-item-animation { from { transform: translate(" + x + "px, -459px);}" + " to { transform: translate(" + x +"px , 0px);}}";
     style.innerText= str;
-    console.log("move at " +x);
 }
 
 
 function generateItemTypeTwo(){
     var x = Math.round(Math.random()*300) - 150;
     var style = document.getElementById('rapid-fire-item-style');
-    var str = "@keyframes rapid-fire-item-animation { from { transform: translate(" + x + "px, -200px);}" + " to { transform: translate(" + x +"px , 340px);}}";
+    var str = "@keyframes rapid-fire-item-animation { from { transform: translate(" + x + "px, -450px);}" + " to { transform: translate(" + x +"px , 0px);}}";
     style.innerText= str;
-    console.log("move at " +x);
 }
 
 function generateEnemyTypeOne(){
@@ -85,7 +80,6 @@ function generateEnemyTypeThree() {
 }
 function randomFiringModeItemGenerator(){
     var typeNum = Math.floor(Math.random() * (2)) + 1;
-    console.log("Generate item number " + typeNum);
     switch (typeNum){
         case 1:
             generateItemTypeOne();
@@ -167,7 +161,7 @@ function enemyTypeOneDropBomb() {
 
 //Todo check if bullet hit enemy
 function checkHit() {
-	console.log("inside");
+	/*
 	var bulletX = parseFloat($("#right-bullet").css("transform").split(" ")[4]);
 	var bulletY = parseFloat($("#right-bullet").css("transform").split(" ")[5]);
 	var laserX = parseFloat($("#laser").css("transform").split(" ")[4]);
@@ -180,17 +174,64 @@ function checkHit() {
 	var meteor3Y = parseFloat($("#meteor3").css("transform").split(" ")[5]);
 
 	//Todo check if bullet hit meteor
-	if(((meteor1X - 10) <= bulletX <= (meteor1X + 10)) && ((meteor1Y - 10) >= bulletY >= (meteor1Y + 10))){
+	if(((meteor1X - 10) <= bulletX && bulletX <= (meteor1X + 10)) && ((meteor1Y - 10) >= bulletY && bulletY >= (meteor1Y + 10))){
 		console.log("hit");
 	}
-	if(((meteor2X - 10) <= bulletX <= (meteor2X + 10)) && ((meteor1Y - 10) >= bulletY >= (meteor2Y + 10))){
+	if(((meteor2X - 10) <= bulletX && bulletX <= (meteor2X + 10)) && ((meteor1Y - 10) >= bulletY && bulletY >= (meteor2Y + 10))){
 		console.log("hit");
 	}
-	if(((meteor3X - 10) <= bulletX <= (meteor3X + 10)) && ((meteor3Y - 10) >= bulletY >= (meteor3Y + 10))){
+	if(((meteor3X - 10) <= bulletX && bulletX <= (meteor3X + 10)) && ((meteor3Y - 10) >= bulletY && bulletY >= (meteor3Y + 10))){
 		console.log("hit");
-	}
-
+	}*/
+	
 }
+
+function checkItemHit(){
+	var playerX = parseFloat($("#player").css("transform").split(" ")[4]);
+    var playerY = parseFloat($("#player").css("transform").split(" ")[5]);
+    if(isNaN(playerX)){
+    	playerX = playerY = 0;
+	}
+    var laserItemX = parseFloat($("#laser-item").css("transform").split(" ")[4]);
+    var laserItemY = parseFloat($("#laser-item").css("transform").split(" ")[5]);
+    var rapidX = parseFloat($("#rapid-fire-item").css("transform").split(" ")[4]);
+    var rapidY = parseFloat($("#rapid-fire-item").css("transform").split(" ")[5]);
+
+    if(!isNaN(laserItemX)){
+    	if((playerX - 15) <= laserItemX && laserItemX <= (playerX + 15) && (playerY - 40) <= laserItemY && laserItemY <= (playerY)){
+    		//console.log(playerY + " " + laserItemY + " got laser");
+            $("#laser-item").css("display", "none");
+            if(boolRapidFire){
+            	boolRapidFire = false;
+            	clearTimeout(RapidFireTimeout);
+			}else if (boolLaser){
+            	clearTimeout(LaserTimeout);
+			}
+			boolLaser = true;
+            LaserTimeout = setTimeout(function(){
+                boolLaser = false;
+            }, 5000)
+		}
+	}else if(!isNaN(rapidX)){
+        if((playerX - 15) <= rapidX && rapidX<= (playerX + 15) && (playerY - 40) <= rapidY && rapidY <= (playerY)){
+            //console.log(playerY + " " + rapidY + " got rapid");
+            $("#rapid-fire-item").css("display", "none");
+            if(boolLaser){
+            	boolLaser = false;
+            	clearTimeout(LaserTimeout);
+			}else if (boolRapidFire){
+            	clearTimeout(RapidFireTimeout);
+			}
+			boolRapidFire = true;
+			RapidFireTimeout = setTimeout(function(){
+				boolRapidFire = false;
+			}, 5000);
+
+        }
+	}
+}
+
+
 
 
 function  mainGame() {
@@ -199,9 +240,11 @@ function  mainGame() {
     randomFiringModeItemGenerator();
 	setInterval(randomEnemyTypeGenerator, 5000);
     setInterval(randomFiringModeItemGenerator, 5000);
+    setInterval(checkItemHit, 100);
+    setInterval(checkHit, 100);
 	var dropSecond = (Math.floor(Math.random() * (3)) + 1)*500;
 	setInterval(enemyTypeOneDropBomb, dropSecond);
-	requestAnimationFrame(checkHit); // not working help check
+	//requestAnimationFrame(checkHit); // not working help check
 
 }
 

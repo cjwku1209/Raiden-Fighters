@@ -2,7 +2,7 @@ function restart(){
     console.log("restart clicked");
     //Transition effect
     $("#gameOver").fadeOut(300);
-    $("#time-value").text(1);
+    $("#time-value").text(300);
     timeRemaining = parseInt($("#time-value").text());
 
     //Wait until the effect is shown
@@ -10,6 +10,8 @@ function restart(){
         $("#gameOver").css("display","none");
         $("#main").css("display","block");
     }, 250);
+
+
 }
 
 
