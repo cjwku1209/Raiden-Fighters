@@ -6,6 +6,7 @@ var LaserTimeout;
 var health = 4;
 var timerTimeout;
 
+// Timer
 function countdown() {
     // Decrease the remaining time
     timeRemaining--;
@@ -22,7 +23,7 @@ function countdown() {
     }
 }
 
-
+// Bullet animation
 function bulletFrameChange(x, y) {
     var styles = document.getElementById('bullet-style');
     var str = "@keyframes bullet-animation { from { transform: translate(" + x + "px, " + y + "px);}" + " to { transform: translate(" + x + "px, -430px);}}";
@@ -33,6 +34,24 @@ function laserFrameChange(x, y) {
     var styles = document.getElementById('laser-style');
     var str = "@keyframes laser-animation { from { transform: translate(" + x + "px, " + y + "px);}" + " to { transform: translate(" + x + "px, -430px);}}";
     styles.innerText= str;
+}
+
+// Generate random item
+function randomFiringModeItemGenerator(){
+    var typeNum = Math.floor(Math.random() * (2)) + 1;
+    switch (typeNum){
+        case 1:
+            generateItemTypeOne();
+            $('#laser-item').css("display", "block");
+            $('#laser-item').css('animationPlayState', 'running');
+            break;
+
+        case 2:
+            generateItemTypeTwo();
+            $('#rapid-fire-item').css("display", "block");
+            $('#rapid-fire-item').css('animationPlayState', 'running');
+            break;
+    }
 }
 
 function generateItemTypeOne(){
@@ -48,6 +67,39 @@ function generateItemTypeTwo(){
     var style = document.getElementById('rapid-fire-item-style');
     var str = "@keyframes rapid-fire-item-animation { from { transform: translate(" + x + "px, -450px);}" + " to { transform: translate(" + x +"px , 0px);}}";
     style.innerText= str;
+}
+
+// Generate random enemy
+function randomEnemyTypeGenerator(){
+    //var typeNum = Math.floor(Math.random() * (3)) + 1;
+    var typeNum = 1;
+    switch (typeNum){
+        case 1:
+            generateEnemyTypeOne();
+            $('#enemy-type1-1').css("display", "block");
+            $('#enemy-type1-2').css("display", "block");
+            $('#enemy-type1-3').css("display", "block");
+            $('#enemy-type1-1').css('animationPlayState', 'running');
+            $('#enemy-type1-2').css('animationPlayState', 'running');
+            $('#enemy-type1-3').css('animationPlayState', 'running');
+            break;
+
+        case 2:
+            generateEnemyTypeTwo();
+            $('#meteor1').css("display", "block");
+            $('#meteor2').css("display", "block");
+            $('#meteor3').css("display", "block");
+            $('#meteor1').css('animationPlayState', 'running');
+            $('#meteor2').css('animationPlayState', 'running');
+            $('#meteor3').css('animationPlayState', 'running');
+            break;
+
+        case 3:
+            generateEnemyTypeThree();
+            $('#space-bomb').css("display", "block");
+            $('#space-bomb').css('animationPlayState', 'running');
+            break;
+    }
 }
 
 function generateEnemyTypeOne(){
@@ -81,54 +133,8 @@ function generateEnemyTypeThree() {
 	var str = "@keyframes space-bomb-animation { from { transform: translate(-200px, " + y1 + "px);}" + " to { transform: translate(200px, " + y2 +"px);}}";
 	styles.innerText= str;
 }
-function randomFiringModeItemGenerator(){
-    var typeNum = Math.floor(Math.random() * (2)) + 1;
-    switch (typeNum){
-        case 1:
-            generateItemTypeOne();
-            $('#laser-item').css("display", "block");
-            $('#laser-item').css('animationPlayState', 'running');
-            break;
 
-        case 2:
-            generateItemTypeTwo();
-            $('#rapid-fire-item').css("display", "block");
-            $('#rapid-fire-item').css('animationPlayState', 'running');
-            break;
-    }
-}
-function randomEnemyTypeGenerator(){
-	//var typeNum = Math.floor(Math.random() * (3)) + 1;
-	var typeNum = 2;
-	switch (typeNum){
-		case 1:
-			generateEnemyTypeOne();
-			$('#enemy-type1-1').css("display", "block");
-			$('#enemy-type1-2').css("display", "block");
-			$('#enemy-type1-3').css("display", "block");
-			$('#enemy-type1-1').css('animationPlayState', 'running');
-			$('#enemy-type1-2').css('animationPlayState', 'running');
-			$('#enemy-type1-3').css('animationPlayState', 'running');
-			break;
-
-		case 2:
-			generateEnemyTypeTwo();
-			$('#meteor1').css("display", "block");
-			$('#meteor2').css("display", "block");
-			$('#meteor3').css("display", "block");
-			$('#meteor1').css('animationPlayState', 'running');
-			$('#meteor2').css('animationPlayState', 'running');
-			$('#meteor3').css('animationPlayState', 'running');
-			break;
-
-		case 3:
-			generateEnemyTypeThree();
-			$('#space-bomb').css("display", "block");
-			$('#space-bomb').css('animationPlayState', 'running');
-			break;
-	}
-}
-
+// Drop bomb animation
 function enemyTypeOneDropBomb() {
 	var styles = document.getElementById('bomb1-style');
 	if($('#enemy-type1-1').css("animation-play-state")=="running" && $('#bomb1-1').css("animation-play-state")=="paused"){
@@ -155,14 +161,27 @@ function enemyTypeOneDropBomb() {
 		var bomb3Y= parseFloat($('#enemy-type1-3').css("transform").split(" ")[5]);
 		var str = "@keyframes bomb1-animation { from { transform: translate(" + bomb3X + "px, " + bomb3Y + "px);}" + " to { transform: translate(" + bomb3X + "px, 0px);}}";
 		styles.innerText= str;
-
 		$('#bomb1-3').css("display", "block");
 		$('#bomb1-3').css('animationPlayState', 'running');
 	}
 
 }
 
-//Todo check if bullet hit enemy
+// Call when player crash with enemy
+function loseHealth(enemyType){
+    $("#" + enemyType).css("display", "none");
+    $("#player").css("display", "none");
+    setTimeout(function(){
+        $("#player").css("display", "block");
+    }, 300)
+    $("#heart" + health).hide();
+    health--;
+    if (health <= 0){
+        gameOver();
+    }
+}
+
+// Check all elements interaction
 function checkHit() {
 	if($("#meteor1").css("animation-play-state") === "running"){
         var meteor1X = parseFloat($("#meteor1").css("transform").split(" ")[4]);
@@ -173,41 +192,61 @@ function checkHit() {
         var meteor3Y = parseFloat($("#meteor3").css("transform").split(" ")[5]);
     	checkBulletHitMeteor(boolLaser, meteor1X, meteor1Y, meteor2X, meteor2Y, meteor3X, meteor3Y);
     	checkMeteorHitPlayer(meteor1X, meteor1Y, meteor2X, meteor2Y, meteor3X, meteor3Y);
+	}else if ($("#space-bomb").css("animation-play-state") === "running"){
+        var spaceX = parseFloat($("#space-bomb").css("transform").split(" ")[4]);
+        var spaceY = parseFloat($("#space-bomb").css("transform").split(" ")[5]);
+        checkBulletHitSpaceBomb(boolLaser, spaceX, spaceY);
+        checkSpaceBombHitPlayer(spaceX, spaceY);
+
+        //TODO: Not working for type one -- bomb1,2,3 have same X, Y coordinate
+	}else if($("#enemy-type1-1").css("animation-play-state") === "running"){
+		if($("#bomb1-1").css("animation-play-state") === "running"){
+			var bomb1X = parseFloat($("#bomb1-1").css("transform").split(" ")[4]);
+            var bomb1Y = parseFloat($("#bomb1-1").css("transform").split(" ")[5]);
+			checkBombHitPlayer(1, bomb1X, bomb1Y);
+		}
+		if($("#bomb1-2").css("animation-play-state") === "running"){
+            var bomb2X = parseFloat($("#bomb1-2").css("transform").split(" ")[4]);
+            var bomb2Y = parseFloat($("#bomb1-2").css("transform").split(" ")[5]);
+            checkBombHitPlayer(2, bomb2X, bomb2Y);
+		}
+        if($("#bomb1-3").css("animation-play-state") === "running"){
+            var bomb3X = parseFloat($("#bomb1-3").css("transform").split(" ")[4]);
+            var bomb3Y = parseFloat($("#bomb1-3").css("transform").split(" ")[5]);
+            checkBombHitPlayer(3, bomb3X, bomb3Y);
+        }
 	}
 }
+// Check type 1 (bomb) crash with player
+function checkBombHitPlayer(index, bombX, bombY){
+    var playerX = getPlayerX();
+    var playerY = getPlayerY();
+    if($("#player").css("display") !== "none"){
+    	console.log("index: " + index + " X: " + bombX + ", Y: " + bombY);
+        if((playerX - 15) <= bombX && bombX <= (playerX + 15) && (playerY - 40) <= bombY && bombY <= (playerY) && $("#bomb1-" + index).css("display") !== "none"){
+            loseHealth("bomb1-" + index);
+        }
+    }
+}
 
+// Check type 2 (meteor) crash with player
 function checkMeteorHitPlayer(meteor1X, meteor1Y, meteor2X, meteor2Y, meteor3X, meteor3Y) {
 	var playerX = getPlayerX();
     var playerY = getPlayerY();
     if($("#player").css("display") !== "none"){
 		if((playerX - 30) <= meteor1X && meteor1X <= (playerX + 30) && (playerY - 40) <= meteor1Y && meteor1Y <= (playerY) && $("#meteor1").css("display") !== "none"){
-            $("#meteor1").css("display", "none");
-            $("#player").css("display", "none");
-            loseHealth();
-            setTimeout(function(){
-                $("#player").css("display", "block");
-			}, 300)
+            loseHealth("meteor1");
 		}
 		if((playerX - 30) <= meteor2X && meteor2X <= (playerX + 30) && (playerY - 40) <= meteor2Y && meteor2Y <= (playerY) && $("#meteor2").css("display") !== "none"){
-            $("#meteor2").css("display", "none");
-            $("#player").css("display", "none");
-            loseHealth();
-            setTimeout(function(){
-                $("#player").css("display", "block");
-            }, 300)
+            loseHealth("meteor2");
 		}
         if((playerX - 30) <= meteor3X && meteor3X <= (playerX + 30) && (playerY - 40) <= meteor3Y && meteor3Y <= (playerY) && $("#meteor3").css("display") !== "none"){
-            $("#meteor3").css("display", "none");
-            $("#player").css("display", "none");
-            loseHealth();
-            setTimeout(function(){
-                $("#player").css("display", "block");
-            }, 300)
+            loseHealth("meteor3");
         }
     }
-
 }
 
+// Check bullet hit enemy type 2 (meteor)
 function checkBulletHitMeteor(isLaser, meteor1X, meteor1Y, meteor2X, meteor2Y, meteor3X, meteor3Y){
     if(isLaser){
         var laserX = parseFloat($("#laser").css("transform").split(" ")[4]);
@@ -242,15 +281,47 @@ function checkBulletHitMeteor(isLaser, meteor1X, meteor1Y, meteor2X, meteor2Y, m
     }
 }
 
+// Check type 3 (space bomb) crash with player
+function checkSpaceBombHitPlayer(spaceX, spaceY){
+    var playerX = getPlayerX();
+    var playerY = getPlayerY();
+    if($("#player").css("display") !== "none"){
+        if((playerX - 30) <= spaceX && spaceX <= (playerX + 30) && (playerY - 60) <= spaceY && spaceY <= (playerY) && $("#space-bomb").css("display") !== "none"){
+            loseHealth("space-bomb");
+        }
+    }
+}
+
+// Check bullet hit type 3 (space bomb)
+function checkBulletHitSpaceBomb(isLaser, spaceX, spaceY){
+    if(isLaser){
+        var laserX = parseFloat($("#laser").css("transform").split(" ")[4]);
+        var laserY = parseFloat($("#laser").css("transform").split(" ")[5]);
+        if((spaceX - 40) <= laserX && laserX <= (spaceX + 30) && (spaceY + 40) >= laserY && laserY >= (spaceY - 40) && $("#space-bomb").css("display") !== "none"){
+            $("#space-bomb").css("display", "none");
+        }
+    } else {
+        var bulletX = parseFloat($("#right-bullet").css("transform").split(" ")[4]);
+        var bulletY = parseFloat($("#right-bullet").css("transform").split(" ")[5]);
+        if((spaceX - 40) <= bulletX && bulletX <= (spaceX + 30) && (spaceY + 30) >= bulletY && bulletY >= (spaceY - 40) && $("#space-bomb").css("display") !== "none"){
+            $("#space-bomb").css("display", "none");
+            $("#left-bullet").css("display", "none");
+            $("#right-bullet").css("display", "none");
+        }
+    }
+}
+
+// Helper function to get X coordinate of player
 function getPlayerX(){
 	return (isNaN(parseFloat($("#player").css("transform").split(" ")[4])))? 0:parseFloat($("#player").css("transform").split(" ")[4]);
 }
 
+// Helper function to get Y coordinate of player
 function getPlayerY() {
     return (isNaN(parseFloat($("#player").css("transform").split(" ")[5])))? 0:parseFloat($("#player").css("transform").split(" ")[5]);
 }
 
-
+// Check if player get the item
 function checkItemHit(){
 	var playerX = getPlayerX()
     var playerY = getPlayerY()
@@ -292,8 +363,6 @@ function checkItemHit(){
         }
 	}
 }
-
-
 
 
 function  mainGame() {
@@ -501,10 +570,3 @@ $(document).ready(function() {
 
 });
 
-function loseHealth(){
-	$("#heart" + health).hide();
-	health--;
-	if (health <= 0){
-		gameOver();
-	}
-}

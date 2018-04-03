@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb85ffe-4b5a-4f36-87d0-d76b4fadb451" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/raiden-fighters.css" afterPath="$PROJECT_DIR$/raiden-fighters.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,8 +19,8 @@
       <file leaf-file-name="raiden-fighters.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/raiden-fighters.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="300" column="37" lean-forward="false" selection-start-line="300" selection-start-column="37" selection-end-line="300" selection-end-column="37" />
+            <state relative-caret-position="536">
+              <caret line="276" column="16" lean-forward="false" selection-start-line="276" selection-start-column="16" selection-end-line="278" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -46,21 +46,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="raiden-fighters.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="raiden-fighters.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/raiden-fighters.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
+            <state relative-caret-position="2070">
               <caret line="138" column="25" lean-forward="false" selection-start-line="138" selection-start-column="25" selection-end-line="138" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1104">
-              <caret line="99" column="9" lean-forward="false" selection-start-line="99" selection-start-column="9" selection-end-line="99" selection-end-column="9" />
+            <state relative-caret-position="272">
+              <caret line="205" column="21" lean-forward="false" selection-start-line="205" selection-start-column="21" selection-end-line="205" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -98,8 +98,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>console.log</find>
-      <find>console.</find>
       <find>enemyTypeOneDropBomb()</find>
       <find>console</find>
       <find>player</find>
@@ -108,9 +106,7 @@
       <find>shoot</find>
       <find>switch</find>
       <find>bullet-style</find>
-      <find>enemy</find>
       <find>boolLaser</find>
-      <find>time-va</find>
       <find>randomEnemyTypeGenerator</find>
       <find>5000</find>
       <find>300</find>
@@ -120,14 +116,18 @@
       <find>gen</find>
       <find>rapid-fire-item-animation</find>
       <find>blocked</find>
-      <find>translate</find>
       <find>res</find>
-      <find>meteor1blocked</find>
       <find>enemy-type1-style</find>
       <find>start</find>
-      <find>time</find>
       <find>setTimeout</find>
+      <find>translate</find>
       <find>main</find>
+      <find>getPlat</find>
+      <find>bomb</find>
+      <find>time</find>
+      <find>time-va</find>
+      <find>enemy</find>
+      <find>meteor1blocked</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -141,9 +141,9 @@
         <option value="$PROJECT_DIR$/gameOver.css" />
         <option value="$PROJECT_DIR$/raiden-fighters.html" />
         <option value="$PROJECT_DIR$/startPage.js" />
-        <option value="$PROJECT_DIR$/main.js" />
         <option value="$PROJECT_DIR$/gameOver.js" />
         <option value="$PROJECT_DIR$/raiden-fighters.css" />
+        <option value="$PROJECT_DIR$/main.js" />
       </list>
     </option>
   </component>
@@ -270,7 +270,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72341000" />
+    <option name="totallyTimeSpent" value="75563000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -654,14 +654,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gameOver.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -678,18 +670,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/raiden-fighters.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="300" column="37" lean-forward="false" selection-start-line="300" selection-start-column="37" selection-end-line="300" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/startPage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/raiden-fighters.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="276" column="16" lean-forward="false" selection-start-line="276" selection-start-column="16" selection-end-line="278" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -702,18 +694,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.js">
+    <entry file="file://$PROJECT_DIR$/gameOver.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1104">
-          <caret line="99" column="9" lean-forward="false" selection-start-line="99" selection-start-column="9" selection-end-line="99" selection-end-column="9" />
+        <state relative-caret-position="210">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/raiden-fighters.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
+        <state relative-caret-position="2070">
           <caret line="138" column="25" lean-forward="false" selection-start-line="138" selection-start-column="25" selection-end-line="138" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="205" column="21" lean-forward="false" selection-start-line="205" selection-start-column="21" selection-end-line="205" selection-end-column="21" />
           <folding />
         </state>
       </provider>
