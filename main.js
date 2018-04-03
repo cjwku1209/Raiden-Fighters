@@ -3,6 +3,9 @@ var boolLaser = false;
 var boolRapidFire = false;
 var RapidFireTimeout;
 var LaserTimeout;
+var health = 4;
+var timerTimeout;
+
 function countdown() {
     // Decrease the remaining time
     timeRemaining--;
@@ -10,7 +13,7 @@ function countdown() {
     // Continue the countdown if there is still time
     if (timeRemaining >= 0) {
         $("#time-value").text(timeRemaining);
-        setTimeout(countdown, 1000);
+        timerTimeout = setTimeout(countdown, 1000);
     }
 
     // Game over when the time is up
@@ -161,30 +164,7 @@ function enemyTypeOneDropBomb() {
 
 //Todo check if bullet hit enemy
 function checkHit() {
-	/*
-	var bulletX = parseFloat($("#right-bullet").css("transform").split(" ")[4]);
-	var bulletY = parseFloat($("#right-bullet").css("transform").split(" ")[5]);
-	var laserX = parseFloat($("#laser").css("transform").split(" ")[4]);
-	var laserY = parseFloat($("#laser").css("transform").split(" ")[5]);
-	var meteor1X = parseFloat($("#meteor1").css("transform").split(" ")[4]);
-	var meteor1Y = parseFloat($("#meteor1").css("transform").split(" ")[5]);
-	var meteor2X = parseFloat($("#meteor2").css("transform").split(" ")[4]);
-	var meteor2Y = parseFloat($("#meteor2").css("transform").split(" ")[5]);
-	var meteor3X = parseFloat($("#meteor3").css("transform").split(" ")[4]);
-	var meteor3Y = parseFloat($("#meteor3").css("transform").split(" ")[5]);
-
-	//Todo check if bullet hit meteor
-	if(((meteor1X - 10) <= bulletX && bulletX <= (meteor1X + 10)) && ((meteor1Y - 10) >= bulletY && bulletY >= (meteor1Y + 10))){
-		console.log("hit");
-	}
-	if(((meteor2X - 10) <= bulletX && bulletX <= (meteor2X + 10)) && ((meteor1Y - 10) >= bulletY && bulletY >= (meteor2Y + 10))){
-		console.log("hit");
-	}
-	if(((meteor3X - 10) <= bulletX && bulletX <= (meteor3X + 10)) && ((meteor3Y - 10) >= bulletY && bulletY >= (meteor3Y + 10))){
-		console.log("hit");
-	}*/
-
-    if($("#meteor1").css("animation-play-state") === "running"){
+	if($("#meteor1").css("animation-play-state") === "running"){
         var meteor1X = parseFloat($("#meteor1").css("transform").split(" ")[4]);
         var meteor1Y = parseFloat($("#meteor1").css("transform").split(" ")[5]);
         var meteor2X = parseFloat($("#meteor2").css("transform").split(" ")[4]);
@@ -197,11 +177,38 @@ function checkHit() {
 }
 
 function checkMeteorHitPlayer(meteor1X, meteor1Y, meteor2X, meteor2Y, meteor3X, meteor3Y) {
-	
+	var playerX = getPlayerX();
+    var playerY = getPlayerY();
+    if($("#player").css("display") !== "none"){
+		if((playerX - 30) <= meteor1X && meteor1X <= (playerX + 30) && (playerY - 40) <= meteor1Y && meteor1Y <= (playerY) && $("#meteor1").css("display") !== "none"){
+            $("#meteor1").css("display", "none");
+            $("#player").css("display", "none");
+            loseHealth();
+            setTimeout(function(){
+                $("#player").css("display", "block");
+			}, 300)
+		}
+		if((playerX - 30) <= meteor2X && meteor2X <= (playerX + 30) && (playerY - 40) <= meteor2Y && meteor2Y <= (playerY) && $("#meteor2").css("display") !== "none"){
+            $("#meteor2").css("display", "none");
+            $("#player").css("display", "none");
+            loseHealth();
+            setTimeout(function(){
+                $("#player").css("display", "block");
+            }, 300)
+		}
+        if((playerX - 30) <= meteor3X && meteor3X <= (playerX + 30) && (playerY - 40) <= meteor3Y && meteor3Y <= (playerY) && $("#meteor3").css("display") !== "none"){
+            $("#meteor3").css("display", "none");
+            $("#player").css("display", "none");
+            loseHealth();
+            setTimeout(function(){
+                $("#player").css("display", "block");
+            }, 300)
+        }
+    }
+
 }
 
 function checkBulletHitMeteor(isLaser, meteor1X, meteor1Y, meteor2X, meteor2Y, meteor3X, meteor3Y){
-
     if(isLaser){
         var laserX = parseFloat($("#laser").css("transform").split(" ")[4]);
         var laserY = parseFloat($("#laser").css("transform").split(" ")[5]);
@@ -235,13 +242,18 @@ function checkBulletHitMeteor(isLaser, meteor1X, meteor1Y, meteor2X, meteor2Y, m
     }
 }
 
+function getPlayerX(){
+	return (isNaN(parseFloat($("#player").css("transform").split(" ")[4])))? 0:parseFloat($("#player").css("transform").split(" ")[4]);
+}
+
+function getPlayerY() {
+    return (isNaN(parseFloat($("#player").css("transform").split(" ")[5])))? 0:parseFloat($("#player").css("transform").split(" ")[5]);
+}
+
 
 function checkItemHit(){
-	var playerX = parseFloat($("#player").css("transform").split(" ")[4]);
-    var playerY = parseFloat($("#player").css("transform").split(" ")[5]);
-    if(isNaN(playerX)){
-    	playerX = playerY = 0;
-	}
+	var playerX = getPlayerX()
+    var playerY = getPlayerY()
     var laserItemX = parseFloat($("#laser-item").css("transform").split(" ")[4]);
     var laserItemY = parseFloat($("#laser-item").css("transform").split(" ")[5]);
     var rapidX = parseFloat($("#rapid-fire-item").css("transform").split(" ")[4]);
@@ -310,7 +322,6 @@ $(document).ready(function() {
     $('#restart-button').click(function() {
         restart();
         setTimeout(countdown, 1000);
-        mainGame();
     });
 
     $("#left-bullet").on("animationiteration", function() {
@@ -489,3 +500,11 @@ $(document).ready(function() {
     });
 
 });
+
+function loseHealth(){
+	$("#heart" + health).hide();
+	health--;
+	if (health <= 0){
+		gameOver();
+	}
+}

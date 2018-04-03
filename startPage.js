@@ -1,5 +1,4 @@
 function start(){
-    console.log("clicked");
     //Transition effect
     $("#start-Page").fadeOut(300);
 
