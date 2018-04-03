@@ -95,8 +95,8 @@ function randomFiringModeItemGenerator(){
     }
 }
 function randomEnemyTypeGenerator(){
-	var typeNum = Math.floor(Math.random() * (3)) + 1;
-
+	//var typeNum = Math.floor(Math.random() * (3)) + 1;
+	var typeNum = 2;
 	switch (typeNum){
 		case 1:
 			generateEnemyTypeOne();
@@ -183,8 +183,58 @@ function checkHit() {
 	if(((meteor3X - 10) <= bulletX && bulletX <= (meteor3X + 10)) && ((meteor3Y - 10) >= bulletY && bulletY >= (meteor3Y + 10))){
 		console.log("hit");
 	}*/
+
+    if($("#meteor1").css("animation-play-state") === "running"){
+        var meteor1X = parseFloat($("#meteor1").css("transform").split(" ")[4]);
+        var meteor1Y = parseFloat($("#meteor1").css("transform").split(" ")[5]);
+        var meteor2X = parseFloat($("#meteor2").css("transform").split(" ")[4]);
+        var meteor2Y = parseFloat($("#meteor2").css("transform").split(" ")[5]);
+        var meteor3X = parseFloat($("#meteor3").css("transform").split(" ")[4]);
+        var meteor3Y = parseFloat($("#meteor3").css("transform").split(" ")[5]);
+    	checkBulletHitMeteor(boolLaser, meteor1X, meteor1Y, meteor2X, meteor2Y, meteor3X, meteor3Y);
+    	checkMeteorHitPlayer(meteor1X, meteor1Y, meteor2X, meteor2Y, meteor3X, meteor3Y);
+	}
+}
+
+function checkMeteorHitPlayer(meteor1X, meteor1Y, meteor2X, meteor2Y, meteor3X, meteor3Y) {
 	
 }
+
+function checkBulletHitMeteor(isLaser, meteor1X, meteor1Y, meteor2X, meteor2Y, meteor3X, meteor3Y){
+
+    if(isLaser){
+        var laserX = parseFloat($("#laser").css("transform").split(" ")[4]);
+        var laserY = parseFloat($("#laser").css("transform").split(" ")[5]);
+        if((meteor1X - 30) <= laserX && laserX <= (meteor1X + 30) && (meteor1Y + 100) >= laserY && $("#meteor1").css("display") !== "none"){
+            $("#meteor1").css("display", "none");
+        }
+        if((meteor2X - 30) <= laserX && laserX <= (meteor2X + 30) && (meteor2Y + 100) >= laserY  && $("#meteor2").css("display") !== "none"){
+            $("#meteor2").css("display", "none");
+        }
+        if((meteor3X - 30) <= laserX && laserX <= (meteor3X + 30) && (meteor3Y + 100) >= laserY  && $("#meteor3").css("display") !== "none"){
+            $("#meteor3").css("display", "none");
+        }
+    } else {
+        var bulletX = parseFloat($("#right-bullet").css("transform").split(" ")[4]);
+        var bulletY = parseFloat($("#right-bullet").css("transform").split(" ")[5]);
+        if((meteor1X - 30) <= bulletX && bulletX <= (meteor1X + 30) && (meteor1Y + 70) >= bulletY && $("#meteor1").css("display") !== "none"){
+            $("#meteor1").css("display", "none");
+            $("#left-bullet").css("display", "none");
+            $("#right-bullet").css("display", "none");
+        }
+        if((meteor2X - 30) <= bulletX && bulletX <= (meteor2X + 30) && (meteor2Y + 70) >= bulletY  && $("#meteor2").css("display") !== "none"){
+            $("#meteor2").css("display", "none");
+            $("#left-bullet").css("display", "none");
+            $("#right-bullet").css("display", "none");
+        }
+        if((meteor3X - 30) <= bulletX && bulletX <= (meteor3X + 30) && (meteor3Y + 70) >= bulletY  && $("#meteor3").css("display") !== "none"){
+            $("#meteor3").css("display", "none");
+            $("#left-bullet").css("display", "none");
+            $("#right-bullet").css("display", "none");
+        }
+    }
+}
+
 
 function checkItemHit(){
 	var playerX = parseFloat($("#player").css("transform").split(" ")[4]);
@@ -210,7 +260,7 @@ function checkItemHit(){
 			boolLaser = true;
             LaserTimeout = setTimeout(function(){
                 boolLaser = false;
-            }, 5000)
+            }, 30000)
 		}
 	}else if(!isNaN(rapidX)){
         if((playerX - 15) <= rapidX && rapidX<= (playerX + 15) && (playerY - 40) <= rapidY && rapidY <= (playerY)){
@@ -225,7 +275,7 @@ function checkItemHit(){
 			boolRapidFire = true;
 			RapidFireTimeout = setTimeout(function(){
 				boolRapidFire = false;
-			}, 5000);
+			}, 30000);
 
         }
 	}
@@ -239,7 +289,7 @@ function  mainGame() {
 	randomEnemyTypeGenerator();
     randomFiringModeItemGenerator();
 	setInterval(randomEnemyTypeGenerator, 5000);
-    setInterval(randomFiringModeItemGenerator, 5000);
+    setInterval(randomFiringModeItemGenerator, parseInt(Math.random()*30000) + 20000);
     setInterval(checkItemHit, 100);
     setInterval(checkHit, 100);
 	var dropSecond = (Math.floor(Math.random() * (3)) + 1)*500;
