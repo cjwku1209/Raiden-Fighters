@@ -4,6 +4,7 @@ function restart(){
     $("#time-value").text(300);
     timeRemaining = parseInt($("#time-value").text());
     health = 4;
+    score = 0;
     clearTimeout(timerTimeout);
 
     for(var i = 1; i <=4 ; i++){

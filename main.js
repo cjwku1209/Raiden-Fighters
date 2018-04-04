@@ -5,6 +5,7 @@ var RapidFireTimeout;
 var LaserTimeout;
 var health = 4;
 var timerTimeout;
+var score = 0;
 
 // Timer
 function countdown() {
@@ -71,8 +72,8 @@ function generateItemTypeTwo(){
 
 // Generate random enemy
 function randomEnemyTypeGenerator(){
-    // var typeNum = Math.floor(Math.random() * (3)) + 1;
-    var typeNum = 1;
+     var typeNum = Math.floor(Math.random() * (3)) + 1;
+    //var typeNum = 1;
     switch (typeNum){
         case 1:
             generateEnemyTypeOne();
@@ -204,6 +205,15 @@ function loseHealth(enemyType){
     }
 }
 
+// Call when player eliminate an enemy
+function killEnemy(point){
+	score += point;
+	$("#score-value").text(score);
+	if (score >= 500){
+		$("#boss").show();
+	}
+}
+
 // Check all elements interaction
 function checkHit() {
 	if($("#meteor1").css("animation-play-state") === "running"){
@@ -278,13 +288,14 @@ function checkEnemy1HitPlayer(index, enemyX, enemyY){
     }
 }
 
-// Check bullet hit type 3 (space bomb)
+// Check bullet hit type 1 enemy
 function checkBulletHitEnemy1(isLaser, index, enemyX, enemyY){
     if(isLaser){
         var laserX = parseFloat($("#laser").css("transform").split(" ")[4]);
         var laserY = parseFloat($("#laser").css("transform").split(" ")[5]);
-        if((enemyX - 30) <= laserX && laserX <= (enemyX + 30) && (enemyY + 40) >= laserY && laserY >= (enemyY - 40) && $("#enemy-type1-" + index).css("display") !== "none"){
+        if((enemyX - 40) <= laserX && laserX <= (enemyX + 40) && (enemyY + 30) >= laserY && laserY >= (enemyY - 40) && $("#enemy-type1-" + index).css("display") !== "none"){
             $("#enemy-type1-" + index).css("display", "none");
+            killEnemy(30);
         }
     } else {
         var bulletX = parseFloat($("#right-bullet").css("transform").split(" ")[4]);
@@ -293,6 +304,7 @@ function checkBulletHitEnemy1(isLaser, index, enemyX, enemyY){
             $("#enemy-type1-" + index).css("display", "none");
             $("#left-bullet").css("display", "none");
             $("#right-bullet").css("display", "none");
+            killEnemy(30);
         }
     }
 }
@@ -321,12 +333,15 @@ function checkBulletHitMeteor(isLaser, meteor1X, meteor1Y, meteor2X, meteor2Y, m
         var laserY = parseFloat($("#laser").css("transform").split(" ")[5]);
         if((meteor1X - 30) <= laserX && laserX <= (meteor1X + 30) && (meteor1Y + 100) >= laserY && $("#meteor1").css("display") !== "none"){
             $("#meteor1").css("display", "none");
+            killEnemy(20);
         }
         if((meteor2X - 30) <= laserX && laserX <= (meteor2X + 30) && (meteor2Y + 100) >= laserY  && $("#meteor2").css("display") !== "none"){
             $("#meteor2").css("display", "none");
+            killEnemy(20);
         }
         if((meteor3X - 30) <= laserX && laserX <= (meteor3X + 30) && (meteor3Y + 100) >= laserY  && $("#meteor3").css("display") !== "none"){
             $("#meteor3").css("display", "none");
+            killEnemy(20);
         }
     } else {
         var bulletX = parseFloat($("#right-bullet").css("transform").split(" ")[4]);
@@ -367,6 +382,7 @@ function checkBulletHitSpaceBomb(isLaser, spaceX, spaceY){
         var laserY = parseFloat($("#laser").css("transform").split(" ")[5]);
         if((spaceX - 40) <= laserX && laserX <= (spaceX + 30) && (spaceY + 40) >= laserY && laserY >= (spaceY - 40) && $("#space-bomb").css("display") !== "none"){
             $("#space-bomb").css("display", "none");
+            killEnemy(50);
         }
     } else {
         var bulletX = parseFloat($("#right-bullet").css("transform").split(" ")[4]);
@@ -375,6 +391,7 @@ function checkBulletHitSpaceBomb(isLaser, spaceX, spaceY){
             $("#space-bomb").css("display", "none");
             $("#left-bullet").css("display", "none");
             $("#right-bullet").css("display", "none");
+            killEnemy(50);
         }
     }
 }
