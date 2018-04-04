@@ -70,7 +70,7 @@
 
 #bomb1-2 {
     display: none;
-    animation-name: bomb1-animation;
+    animation-name: bomb2-animation;
     animation-duration: 2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -79,7 +79,7 @@
 
 #bomb1-3 {
     display: none;
-    animation-name: bomb1-animation;
+    animation-name: bomb3-animation;
     animation-duration: 2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;

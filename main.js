@@ -155,30 +155,33 @@ function generateEnemyTypeThree() {
 
 // Drop bomb animation
 function enemyTypeOneDropBomb() {
-	var styles = document.getElementById('bomb1-style');
+	var styles;
 	if($('#enemy-type1-1').css("animation-play-state")=="running" && $('#bomb1-1').css("animation-play-state")=="paused"){
+		styles = document.getElementById('bomb1-style');
 		var bomb1X= parseFloat($('#enemy-type1-1').css("transform").split(" ")[4]);
 		var bomb1Y= parseFloat($('#enemy-type1-1').css("transform").split(" ")[5]);
-		var str = "@keyframes bomb1-animation { from { transform: translate(" + bomb1X + "px, " + bomb1Y + "px);}" + " to { transform: translate(" + bomb1X + "px, 0px);}}";
+		console.log("bomb1:" + bomb1X + ", " +bomb1Y);
+		var str = "@keyframes bomb1-animation { from { transform: translate(" + bomb1X + "px, " + bomb1Y + "px);}" + " to { transform: translate(" + bomb1X + "px, 100px);}}";
 		styles.innerText= str;
 		$('#bomb1-1').css("display", "block");
 		$('#bomb1-1').css('animationPlayState', 'running');
 
 	}
 	if($('#enemy-type1-2').css("animation-play-state")=="running" && $('#bomb1-2').css("animation-play-state")=="paused"){
+		styles = document.getElementById('bomb2-style');
 		var bomb2X= parseFloat($('#enemy-type1-2').css("transform").split(" ")[4]);
 		var bomb2Y= parseFloat($('#enemy-type1-2').css("transform").split(" ")[5]);
-		var str = "@keyframes bomb1-animation { from { transform: translate(" + bomb2X + "px, " + bomb2Y + "px);}" + " to { transform: translate(" + bomb2X + "px, 0px);}}";
+		var str = "@keyframes bomb2-animation { from { transform: translate(" + bomb2X + "px, " + bomb2Y + "px);}" + " to { transform: translate(" + bomb2X + "px, 100px);}}";
 		styles.innerText= str;
-
 		$('#bomb1-2').css("display", "block");
 		$('#bomb1-2').css('animationPlayState', 'running');
 
 	}
 	if($('#enemy-type1-3').css("animation-play-state")=="running" && $('#bomb1-3').css("animation-play-state")=="paused"){
+		styles = document.getElementById('bomb3-style');
 		var bomb3X= parseFloat($('#enemy-type1-3').css("transform").split(" ")[4]);
 		var bomb3Y= parseFloat($('#enemy-type1-3').css("transform").split(" ")[5]);
-		var str = "@keyframes bomb1-animation { from { transform: translate(" + bomb3X + "px, " + bomb3Y + "px);}" + " to { transform: translate(" + bomb3X + "px, 0px);}}";
+		var str = "@keyframes bomb3-animation { from { transform: translate(" + bomb3X + "px, " + bomb3Y + "px);}" + " to { transform: translate(" + bomb3X + "px, 100px);}}";
 		styles.innerText= str;
 		$('#bomb1-3').css("display", "block");
 		$('#bomb1-3').css('animationPlayState', 'running');
@@ -241,7 +244,7 @@ function checkBombHitPlayer(index, bombX, bombY){
     var playerX = getPlayerX();
     var playerY = getPlayerY();
     if($("#player").css("display") !== "none"){
-    	console.log("index: " + index + " X: " + bombX + ", Y: " + bombY);
+    	// console.log("index: " + index + " X: " + bombX + ", Y: " + bombY);
         if((playerX - 15) <= bombX && bombX <= (playerX + 15) && (playerY - 40) <= bombY && bombY <= (playerY) && $("#bomb1-" + index).css("display") !== "none"){
             loseHealth("bomb1-" + index);
         }
@@ -392,8 +395,8 @@ function  mainGame() {
     setInterval(randomFiringModeItemGenerator, parseInt(Math.random()*30000) + 20000);
     setInterval(checkItemHit, 100);
     setInterval(checkHit, 100);
-	var dropSecond = (Math.floor(Math.random() * (3)) + 1)*500;
-	setInterval(enemyTypeOneDropBomb, dropSecond);
+	// var dropSecond = (Math.floor(Math.random() * (3)) + 1)*500;
+	setInterval(enemyTypeOneDropBomb, 3000);
 	//requestAnimationFrame(checkHit); // not working help check
 
 }
