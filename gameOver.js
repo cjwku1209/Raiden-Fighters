@@ -10,7 +10,29 @@ function restart(){
     for(var i = 1; i <=4 ; i++){
         $("#heart" + i).show();
     }
-
+	$('#enemy-type1-1').css("animationPlayState", "paused");
+	$('#enemy-type1-1').css("display", "none");
+    $('#enemy-type1-2').css("animationPlayState", "paused");
+	$('#enemy-type1-2').css("display", "none");
+	$('#enemy-type1-3').css("animationPlayState", "paused");
+	$('#enemy-type1-3').css("display", "none");
+	$('#meteor1').css("animationPlayState", "paused");
+	$('#meteor1').css("display", "none");
+	$('#meteor2').css("animationPlayState", "paused");
+	$('#meteor2').css("display", "none");
+	$('#meteor3').css("animationPlayState", "paused");
+	$('#meteor3').css("display", "none");
+	$('#bomb1-1').css("animationPlayState", "paused");
+	$('#bomb1-1').css("display", "none");
+	$('#bomb1-2').css("animationPlayState", "paused");
+	$('#bomb1-2').css("display", "none");
+	$('#bomb1-3').css("animationPlayState", "paused");
+	$('#bomb1-3').css("display", "none");
+	$('#space-bomb').css("animationPlayState", "paused");
+	$('#space-bomb').css("display", "none");
+	$('#player').css('transform', 'translate(0px, 0px)');
+	x=0;
+	y=0;
     //Wait until the effect is shown
     setTimeout(function(){
         $("#gameOver").css("display","none");

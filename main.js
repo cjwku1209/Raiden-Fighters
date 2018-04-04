@@ -6,6 +6,8 @@ var LaserTimeout;
 var health = 4;
 var timerTimeout;
 var score = 0;
+var x = 0;
+var y = 0;
 
 // Timer
 function countdown() {
@@ -465,8 +467,6 @@ function  mainGame() {
 }
 
 $(document).ready(function() {
-	var x = 0;
-	var y = 0;
     $('#start-button').click(function() {
         start();
         setTimeout(countdown, 1000);
