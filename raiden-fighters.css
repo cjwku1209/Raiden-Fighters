@@ -132,8 +132,6 @@
 }
 
 #space-bomb {
-    /*display: none;*/
-    /*transform: translate(180px, -280px); !* x= -200 y= -280*!*/
     display: none;
     animation-name: space-bomb-animation;
     animation-duration: 2s;
@@ -141,11 +139,49 @@
     animation-iteration-count: infinite;
     animation-play-state: paused;
 }
-/*#boss {*/
-    /*display: block;*/
-    /*transform: translate(20px, 100px);*/
-/*}*/
 
-#boss {
+#boss{
     display: none;
+    position: relative;
+}
+
+#boss-heart-1 {
+    display: none;
+}
+
+#boss-heart-2 {
+    display: none;
+}
+
+#boss-heart-3 {
+    display: none;
+}
+
+#boss-heart-4 {
+    display: none;
+}
+
+#boss-heart-5 {
+    display: none;
+}
+
+#boss-heart-6 {
+    display: none;
+}
+
+#boss-heart-7 {
+    display: none;
+}
+
+#boss-heart-8 {
+    display: none;
+}
+
+#bossAttack{
+    display: none;
+    animation-name: boss-attack-animation;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
 }

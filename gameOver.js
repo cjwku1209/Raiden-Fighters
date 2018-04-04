@@ -6,10 +6,20 @@ function restart(){
     health = 4;
     score = 0;
     clearTimeout(timerTimeout);
+    clearTimeout(blinkTimeout);
 
     for(var i = 1; i <=4 ; i++){
         $("#heart" + i).show();
     }
+	for(var i = 1; i <=8 ; i++){
+		$("#boss-heart-" + i).hide();
+	}
+	$('#boss').hide();
+	bossLevel = false;
+	blinkCount = 6;
+	$('#bossAttack').hide();
+	$('#bossAttack').css("animationPlayState", "paused");
+    $('#player').show();
 	$('#enemy-type1-1').css("animationPlayState", "paused");
 	$('#enemy-type1-1').css("display", "none");
     $('#enemy-type1-2').css("animationPlayState", "paused");

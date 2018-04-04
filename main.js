@@ -5,11 +5,14 @@ var RapidFireTimeout;
 var LaserTimeout;
 var health = 4;
 var timerTimeout;
-var score = 0;
+var score = 500;
 var x = 0;
 var y = 0;
 var damage = true;
 var blinkCount = 6;
+var bossLevel = false;
+var win = false;
+var blinkTimeout;
 
 // Timer
 function countdown() {
@@ -34,12 +37,12 @@ function blink() {
 	damage = false;
 	if(blinkCount !=0 && blinkCount%2==0){
 		$("#player").show();
-		setTimeout(blink, 500);
+		blinkTimeout= setTimeout(blink, 500);
 
 	}
 	else if(blinkCount !=0 && blinkCount%2==1){
 		$("#player").hide();
-		setTimeout(blink, 500);
+		blinkTimeout = setTimeout(blink, 500);
 
 	}
 	else{
@@ -97,6 +100,7 @@ function generateItemTypeTwo(){
 
 // Generate random enemy
 function randomEnemyTypeGenerator(){
+	console.log("generate enemy");
      var typeNum = Math.floor(Math.random() * (3)) + 1;
     //var typeNum = 1;
     switch (typeNum){
@@ -236,7 +240,49 @@ function killEnemy(point){
 	score += point;
 	$("#score-value").text(score);
 	if (score >= 500){
-		$("#boss").show();
+		GibsonBoss();
+	}
+}
+
+//boss Level
+function GibsonBoss(){
+	$("#boss").show();
+	for(var i = 1; i <=8 ; i++){
+		$("#boss-heart-" + i).show();
+	}
+	bossLevel = true;
+}
+
+function bossMove(){
+	var bossX =x;
+	if(bossX >= 100){
+		bossX = 100;
+	}
+	if(bossX <= -100){
+		bossX = -98;
+	}
+	$('#boss').css('transform', 'translate(' + bossX +'px,' + ' 0px)');
+	for(var i = 1; i <=8 ; i++){
+		$("#boss-heart-" + i).css('transform', 'translate(' + bossX +'px,' + ' 0px)');
+	}
+
+}
+
+function bossAttack() {
+	if(bossLevel){
+		console.log("in");
+		var bossX =x;
+		if(bossX >= 100){
+			bossX = 100;
+		}
+		if(bossX <= -100){
+			bossX = -98;
+		}
+		var styles = document.getElementById('boss-attack-style');
+		var str = "@keyframes boss-attack-animation { from { transform: translate(" + bossX + "px,  0px);}" + " to { transform: translate(" + bossX + "px, 300px);}}";
+		styles.innerText= str;
+		$('#bossAttack').css("display", "block");
+		$('#bossAttack').css('animationPlayState', 'running');
 	}
 }
 
@@ -483,8 +529,16 @@ function checkItemHit(){
 	}
 }
 
+function checkBoss() {
+	if(bossLevel){
+		setInterval(bossMove, 100);
+	}
+	if(win){
+		console.log("You win!")
+	}
 
-function  mainGame() {
+}
+function mainGame() {
 	// $('#enemy-type2-1').css('transform', 'translate(-40px, -400px)');
 	randomEnemyTypeGenerator();
     randomFiringModeItemGenerator();
@@ -492,10 +546,9 @@ function  mainGame() {
     setInterval(randomFiringModeItemGenerator, parseInt(Math.random()*30000) + 20000);
     setInterval(checkItemHit, 100);
     setInterval(checkHit, 100);
-	// var dropSecond = (Math.floor(Math.random() * (3)) + 1)*500;
 	setInterval(enemyTypeOneDropBomb, 3000);
-	//requestAnimationFrame(checkHit); // not working help check
-
+	setInterval(checkBoss, 100);
+	setInterval(bossAttack, 5000);
 }
 
 $(document).ready(function() {
@@ -614,6 +667,13 @@ $(document).ready(function() {
             'display': 'none'
         });
     });
+
+	$("#bossAttack").on("animationiteration", function() {
+		$("#bossAttack").css({
+			"animationPlayState": "paused",
+			'display': 'none'
+		});
+	});
 
     window.addEventListener('keydown', function (e) {
         // console.log(e.keyCode);
