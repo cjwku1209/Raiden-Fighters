@@ -71,7 +71,7 @@ function generateItemTypeTwo(){
 
 // Generate random enemy
 function randomEnemyTypeGenerator(){
-    //var typeNum = Math.floor(Math.random() * (3)) + 1;
+    // var typeNum = Math.floor(Math.random() * (3)) + 1;
     var typeNum = 1;
     switch (typeNum){
         case 1:
@@ -105,9 +105,28 @@ function randomEnemyTypeGenerator(){
 function generateEnemyTypeOne(){
 	var y1 = Math.round(Math.random()*-230)-120;
 	var y2 = Math.round(y1 + 120);
-	var styles = document.getElementById('enemy-type1-style');
-	var str = "@keyframes enemy-type1-animation { from { transform: translate(205px, " + y1 + "px);}" + " to { transform: translate(-345px, " + y2 +"px);}}";
+	var styles = document.getElementById('enemy-type1-1-style');
+	var str = "@keyframes enemy-type1-1-animation { from { transform: translate(205px, " + y1 + "px);}" + " to { transform: translate(-345px, " + y2 +"px);}}";
 	styles.innerText= str;
+
+	y1 -=44;
+	y2 -=44;
+	styles = document.getElementById('enemy-type1-2-style');
+	str = "@keyframes enemy-type1-2-animation { from { transform: translate(267px, " + y1 + "px);}" + " to { transform: translate(-389px, " + y2 +"px);}}";
+	styles.innerText= str;
+
+	var animationDuration = (350+62)/350 *5;
+
+	$('#enemy-type1-2').css("animationDuration", animationDuration + "s");
+
+	y1 -=44;
+	y2 -=44;
+	styles = document.getElementById('enemy-type1-3-style');
+	str = "@keyframes enemy-type1-3-animation { from { transform: translate(329px, " + y1 + "px);}" + " to { transform: translate(-451px, " + y2 +"px);}}";
+	styles.innerText= str;
+
+	animationDuration = (350+62+62)/350 *5;
+	$('#enemy-type1-3').css("animationDuration", animationDuration + "s");
 }
 
 function generateEnemyTypeTwo() {

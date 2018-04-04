@@ -32,7 +32,7 @@
 #enemy-type1-1{
     display: none;
     display: none;
-    animation-name: enemy-type1-animation;
+    animation-name: enemy-type1-1-animation;
     animation-duration: 5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -42,7 +42,7 @@
 #enemy-type1-2{
     display: none;
     display: none;
-    animation-name: enemy-type1-animation;
+    animation-name: enemy-type1-2-animation;
     animation-duration: 5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -52,7 +52,7 @@
 #enemy-type1-3{
     display: none;
     display: none;
-    animation-name: enemy-type1-animation;
+    animation-name: enemy-type1-3-animation;
     animation-duration: 5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
