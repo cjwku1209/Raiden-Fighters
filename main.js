@@ -8,6 +8,8 @@ var timerTimeout;
 var score = 0;
 var x = 0;
 var y = 0;
+var damage = true;
+var blinkCount = 6;
 
 // Timer
 function countdown() {
@@ -24,6 +26,27 @@ function countdown() {
     else {
         gameOver();
     }
+}
+
+// blink when enemy hit
+function blink() {
+	blinkCount--;
+	damage = false;
+	if(blinkCount !=0 && blinkCount%2==0){
+		$("#player").show();
+		setTimeout(blink, 500);
+
+	}
+	else if(blinkCount !=0 && blinkCount%2==1){
+		$("#player").hide();
+		setTimeout(blink, 500);
+
+	}
+	else{
+		$("#player").show();
+		blinkCount =6;
+		damage = true;
+	}
 }
 
 // Bullet animation
@@ -205,6 +228,7 @@ function loseHealth(enemyType){
     if (health <= 0){
         gameOver();
     }
+    blink();
 }
 
 // Call when player eliminate an enemy
@@ -272,22 +296,26 @@ function checkHit() {
 function checkBombHitPlayer(index, bombX, bombY){
     var playerX = getPlayerX();
     var playerY = getPlayerY();
-    if($("#player").css("display") !== "none"){
-        if((playerX - 20) <= bombX && bombX <= (playerX + 20) && (playerY - 90) <= bombY  && bombY <= playerY && $("#bomb1-" + index).css("display") !== "none"){
-            loseHealth("bomb1-" + index);
-        }
-    }
+    if(damage){
+		if($("#player").css("display") !== "none"){
+			if((playerX - 20) <= bombX && bombX <= (playerX + 20) && (playerY - 90) <= bombY  && bombY <= playerY && $("#bomb1-" + index).css("display") !== "none"){
+				loseHealth("bomb1-" + index);
+			}
+		}
+	}
 }
 
 // Check type 1 (plane) crash with player
 function checkEnemy1HitPlayer(index, enemyX, enemyY){
     var playerX = getPlayerX();
     var playerY = getPlayerY();
-    if($("#player").css("display") !== "none"){
-        if((playerX - 30) <= enemyX && enemyX <= (playerX + 30) && (playerY - 40) <= enemyY && enemyY <= (playerY) && $("#enemy-type1-" + index).css("display") !== "none"){
-            loseHealth("enemy-type1-" + index);
-        }
-    }
+    if(damage){
+		if($("#player").css("display") !== "none"){
+			if((playerX - 30) <= enemyX && enemyX <= (playerX + 30) && (playerY - 40) <= enemyY && enemyY <= (playerY) && $("#enemy-type1-" + index).css("display") !== "none"){
+				loseHealth("enemy-type1-" + index);
+			}
+		}
+	}
 }
 
 // Check bullet hit type 1 enemy
@@ -315,17 +343,19 @@ function checkBulletHitEnemy1(isLaser, index, enemyX, enemyY){
 function checkMeteorHitPlayer(meteor1X, meteor1Y, meteor2X, meteor2Y, meteor3X, meteor3Y) {
 	var playerX = getPlayerX();
     var playerY = getPlayerY();
-    if($("#player").css("display") !== "none"){
-		if((playerX - 30) <= meteor1X && meteor1X <= (playerX + 30) && (playerY - 40) <= meteor1Y && meteor1Y <= (playerY) && $("#meteor1").css("display") !== "none"){
-            loseHealth("meteor1");
+    if(damage){
+		if($("#player").css("display") !== "none"){
+			if((playerX - 30) <= meteor1X && meteor1X <= (playerX + 30) && (playerY - 40) <= meteor1Y && meteor1Y <= (playerY) && $("#meteor1").css("display") !== "none"){
+				loseHealth("meteor1");
+			}
+			else if((playerX - 30) <= meteor2X && meteor2X <= (playerX + 30) && (playerY - 40) <= meteor2Y && meteor2Y <= (playerY) && $("#meteor2").css("display") !== "none"){
+				loseHealth("meteor2");
+			}
+			else if((playerX - 30) <= meteor3X && meteor3X <= (playerX + 30) && (playerY - 40) <= meteor3Y && meteor3Y <= (playerY) && $("#meteor3").css("display") !== "none"){
+				loseHealth("meteor3");
+			}
 		}
-		if((playerX - 30) <= meteor2X && meteor2X <= (playerX + 30) && (playerY - 40) <= meteor2Y && meteor2Y <= (playerY) && $("#meteor2").css("display") !== "none"){
-            loseHealth("meteor2");
-		}
-        if((playerX - 30) <= meteor3X && meteor3X <= (playerX + 30) && (playerY - 40) <= meteor3Y && meteor3Y <= (playerY) && $("#meteor3").css("display") !== "none"){
-            loseHealth("meteor3");
-        }
-    }
+	}
 }
 
 // Check bullet hit enemy type 2 (meteor)
@@ -370,11 +400,13 @@ function checkBulletHitMeteor(isLaser, meteor1X, meteor1Y, meteor2X, meteor2Y, m
 function checkSpaceBombHitPlayer(spaceX, spaceY){
     var playerX = getPlayerX();
     var playerY = getPlayerY();
-    if($("#player").css("display") !== "none"){
-        if((playerX - 30) <= spaceX && spaceX <= (playerX + 30) && (playerY - 60) <= spaceY && spaceY <= (playerY) && $("#space-bomb").css("display") !== "none"){
-            loseHealth("space-bomb");
-        }
-    }
+    if(!damage){
+		if($("#player").css("display") !== "none"){
+			if((playerX - 30) <= spaceX && spaceX <= (playerX + 30) && (playerY - 60) <= spaceY && spaceY <= (playerY) && $("#space-bomb").css("display") !== "none"){
+				loseHealth("space-bomb");
+			}
+		}
+	}
 }
 
 // Check bullet hit type 3 (space bomb)
