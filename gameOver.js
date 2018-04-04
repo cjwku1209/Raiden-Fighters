@@ -16,6 +16,8 @@ function restart(){
 	}
 	$('#boss').hide();
 	bossLevel = false;
+	boolLaser = false;
+	boolRapidFire = false;
 	blinkCount = 6;
 	$('#bossAttack').hide();
 	$('#bossAttack').css("animationPlayState", "paused");
