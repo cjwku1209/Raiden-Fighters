@@ -161,7 +161,8 @@ function enemyTypeOneDropBomb() {
 		var bomb1X= parseFloat($('#enemy-type1-1').css("transform").split(" ")[4]);
 		var bomb1Y= parseFloat($('#enemy-type1-1').css("transform").split(" ")[5]);
 		console.log("bomb1:" + bomb1X + ", " +bomb1Y);
-		var str = "@keyframes bomb1-animation { from { transform: translate(" + bomb1X + "px, " + bomb1Y + "px);}" + " to { transform: translate(" + bomb1X + "px, 100px);}}";
+		//var str = "@keyframes bomb1-animation { from { transform: translate(" + bomb1X + "px, " + bomb1Y + "px);}" + " to { transform: translate(" + bomb1X + "px, " + bomb1Y + "px);}}";
+        var str = "@keyframes bomb1-animation { from { transform: translate(" + bomb1X + "px, " + bomb1Y + "px);}" + " to { transform: translate(" + bomb1X + "px, 100px);}}";
 		styles.innerText= str;
 		$('#bomb1-1').css("display", "block");
 		$('#bomb1-1').css('animationPlayState', 'running');
@@ -219,8 +220,6 @@ function checkHit() {
         var spaceY = parseFloat($("#space-bomb").css("transform").split(" ")[5]);
         checkBulletHitSpaceBomb(boolLaser, spaceX, spaceY);
         checkSpaceBombHitPlayer(spaceX, spaceY);
-
-        //TODO: Not working for type one -- bomb1,2,3 have same X, Y coordinate
 	}else if($("#enemy-type1-1").css("animation-play-state") === "running"){
 		if($("#bomb1-1").css("animation-play-state") === "running"){
 			var bomb1X = parseFloat($("#bomb1-1").css("transform").split(" ")[4]);
@@ -237,6 +236,24 @@ function checkHit() {
             var bomb3Y = parseFloat($("#bomb1-3").css("transform").split(" ")[5]);
             checkBombHitPlayer(3, bomb3X, bomb3Y);
         }
+        var enemy1X = parseFloat($("#enemy-type1-1").css("transform").split(" ")[4]);
+        var enemy1Y = parseFloat($("#enemy-type1-1").css("transform").split(" ")[5]);
+        checkEnemy1HitPlayer(1, enemy1X, enemy1Y);
+        checkBulletHitEnemy1(boolLaser, 1, enemy1X, enemy1Y);
+
+        if($("#enemy-type1-2").css("animation-play-state") === "running"){
+            var enemy2X = parseFloat($("#enemy-type1-2").css("transform").split(" ")[4]);
+            var enemy2Y = parseFloat($("#enemy-type1-2").css("transform").split(" ")[5]);
+            checkEnemy1HitPlayer(2, enemy2X, enemy2Y);
+            checkBulletHitEnemy1(boolLaser, 2, enemy2X, enemy2Y);
+		}
+
+        if($("#enemy-type1-3").css("animation-play-state") === "running"){
+            var enemy3X = parseFloat($("#enemy-type1-3").css("transform").split(" ")[4]);
+            var enemy3Y = parseFloat($("#enemy-type1-3").css("transform").split(" ")[5]);
+            checkEnemy1HitPlayer(3, enemy3X, enemy3Y);
+            checkBulletHitEnemy1(boolLaser, 3, enemy3X, enemy3Y);
+		}
 	}
 }
 // Check type 1 (bomb) crash with player
@@ -244,9 +261,38 @@ function checkBombHitPlayer(index, bombX, bombY){
     var playerX = getPlayerX();
     var playerY = getPlayerY();
     if($("#player").css("display") !== "none"){
-    	// console.log("index: " + index + " X: " + bombX + ", Y: " + bombY);
-        if((playerX - 15) <= bombX && bombX <= (playerX + 15) && (playerY - 40) <= bombY && bombY <= (playerY) && $("#bomb1-" + index).css("display") !== "none"){
+        if((playerX - 20) <= bombX && bombX <= (playerX + 20) && (playerY - 90) <= bombY  && bombY <= playerY && $("#bomb1-" + index).css("display") !== "none"){
             loseHealth("bomb1-" + index);
+        }
+    }
+}
+
+// Check type 1 (plane) crash with player
+function checkEnemy1HitPlayer(index, enemyX, enemyY){
+    var playerX = getPlayerX();
+    var playerY = getPlayerY();
+    if($("#player").css("display") !== "none"){
+        if((playerX - 30) <= enemyX && enemyX <= (playerX + 30) && (playerY - 40) <= enemyY && enemyY <= (playerY) && $("#enemy-type1-" + index).css("display") !== "none"){
+            loseHealth("enemy-type1-" + index);
+        }
+    }
+}
+
+// Check bullet hit type 3 (space bomb)
+function checkBulletHitEnemy1(isLaser, index, enemyX, enemyY){
+    if(isLaser){
+        var laserX = parseFloat($("#laser").css("transform").split(" ")[4]);
+        var laserY = parseFloat($("#laser").css("transform").split(" ")[5]);
+        if((enemyX - 30) <= laserX && laserX <= (enemyX + 30) && (enemyY + 40) >= laserY && laserY >= (enemyY - 40) && $("#enemy-type1-" + index).css("display") !== "none"){
+            $("#enemy-type1-" + index).css("display", "none");
+        }
+    } else {
+        var bulletX = parseFloat($("#right-bullet").css("transform").split(" ")[4]);
+        var bulletY = parseFloat($("#right-bullet").css("transform").split(" ")[5]);
+        if((enemyX - 30) <= bulletX && bulletX <= (enemyX + 30) && (enemyY + 30) >= bulletY && bulletY >= (enemyY - 40) && $("#enemy-type1-" + index).css("display") !== "none"){
+            $("#enemy-type1-" + index).css("display", "none");
+            $("#left-bullet").css("display", "none");
+            $("#right-bullet").css("display", "none");
         }
     }
 }
