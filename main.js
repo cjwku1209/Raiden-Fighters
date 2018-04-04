@@ -5,7 +5,7 @@ var RapidFireTimeout;
 var LaserTimeout;
 var health = 4;
 var timerTimeout;
-var score = 500;
+var score = 0;
 var x = 0;
 var y = 0;
 var damage = true;
