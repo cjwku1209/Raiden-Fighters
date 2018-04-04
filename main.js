@@ -428,16 +428,19 @@ function checkBulletHitMeteor(isLaser, meteor1X, meteor1Y, meteor2X, meteor2Y, m
             $("#meteor1").css("display", "none");
             $("#left-bullet").css("display", "none");
             $("#right-bullet").css("display", "none");
+            killEnemy(20);
         }
         if((meteor2X - 30) <= bulletX && bulletX <= (meteor2X + 30) && (meteor2Y + 70) >= bulletY  && $("#meteor2").css("display") !== "none"){
             $("#meteor2").css("display", "none");
             $("#left-bullet").css("display", "none");
             $("#right-bullet").css("display", "none");
+            killEnemy(20);
         }
         if((meteor3X - 30) <= bulletX && bulletX <= (meteor3X + 30) && (meteor3Y + 70) >= bulletY  && $("#meteor3").css("display") !== "none"){
             $("#meteor3").css("display", "none");
             $("#left-bullet").css("display", "none");
             $("#right-bullet").css("display", "none");
+            killEnemy(20);
         }
     }
 }
