@@ -2,6 +2,7 @@ function restart(){
     //Transition effect
     $("#gameOver").fadeOut(300);
     $("#time-value").text(300);
+    $("#score-value").text(0);
     timeRemaining = parseInt($("#time-value").text());
     health = 4;
     score = 0;

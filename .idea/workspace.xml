@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb85ffe-4b5a-4f36-87d0-d76b4fadb451" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameOver.js" afterPath="$PROJECT_DIR$/gameOver.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -58,24 +60,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="442" column="26" lean-forward="false" selection-start-line="442" selection-start-column="26" selection-end-line="442" selection-end-column="26" />
+            <state relative-caret-position="0">
+              <caret line="0" column="24" lean-forward="false" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gameOver.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="gameOver.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gameOver.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="26" column="60" lean-forward="true" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
-              <folding>
-                <marker date="1522847650383" expanded="true" signature="18:1792" ph="{...}" />
-              </folding>
+            <state relative-caret-position="60">
+              <caret line="4" column="28" lean-forward="false" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -102,11 +102,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>drop</find>
       <find>translate</find>
       <find>meteor1blocked</find>
       <find>generate</find>
-      <find>time</find>
       <find>game</find>
       <find>reset</find>
       <find>hit</find>
@@ -132,6 +130,8 @@
       <find>bossAttackTime</find>
       <find>boss</find>
       <find>boss-hear</find>
+      <find>time</find>
+      <find>score</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -274,7 +274,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90453000" />
+    <option name="totallyTimeSpent" value="90681000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -685,14 +685,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="442" column="26" lean-forward="false" selection-start-line="442" selection-start-column="26" selection-end-line="442" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/startPage.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -709,13 +701,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="24" lean-forward="false" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/gameOver.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="26" column="60" lean-forward="true" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
-          <folding>
-            <marker date="1522847650383" expanded="true" signature="18:1792" ph="{...}" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="4" column="28" lean-forward="false" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>

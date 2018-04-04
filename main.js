@@ -1,4 +1,4 @@
-var timeRemaining = 300;
+var timeRemaining =  300;
 var boolLaser = false;
 var boolRapidFire = false;
 var RapidFireTimeout;
