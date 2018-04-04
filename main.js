@@ -13,6 +13,7 @@ var blinkCount = 6;
 var bossLevel = false;
 var win = false;
 var blinkTimeout;
+var bossHealth = 8;
 
 // Timer
 function countdown() {
@@ -190,7 +191,6 @@ function enemyTypeOneDropBomb() {
 		styles = document.getElementById('bomb1-style');
 		var bomb1X= parseFloat($('#enemy-type1-1').css("transform").split(" ")[4]);
 		var bomb1Y= parseFloat($('#enemy-type1-1').css("transform").split(" ")[5]);
-		console.log("bomb1:" + bomb1X + ", " +bomb1Y);
 		//var str = "@keyframes bomb1-animation { from { transform: translate(" + bomb1X + "px, " + bomb1Y + "px);}" + " to { transform: translate(" + bomb1X + "px, " + bomb1Y + "px);}}";
         var str = "@keyframes bomb1-animation { from { transform: translate(" + bomb1X + "px, " + bomb1Y + "px);}" + " to { transform: translate(" + bomb1X + "px, 100px);}}";
 		styles.innerText= str;
@@ -239,18 +239,20 @@ function loseHealth(enemyType){
 function killEnemy(point){
 	score += point;
 	$("#score-value").text(score);
-	if (score >= 500){
+	if (score >= 0){
 		GibsonBoss();
 	}
 }
 
 //boss Level
 function GibsonBoss(){
-	$("#boss").show();
-	for(var i = 1; i <=8 ; i++){
-		$("#boss-heart-" + i).show();
-	}
-	bossLevel = true;
+    if(!bossLevel){
+        $("#boss").show();
+        for(var i = 1; i <=8 ; i++){
+            $("#boss-heart-" + i).show();
+        }
+        bossLevel = true;
+    }
 }
 
 function bossMove(){
@@ -337,7 +339,81 @@ function checkHit() {
             checkBulletHitEnemy1(boolLaser, 3, enemy3X, enemy3Y);
 		}
 	}
+	if($("#boss").css("display") !== "none"){
+        var bossX = parseFloat($("#boss").css("transform").split(" ")[4]);
+        var bossY = parseFloat($("#boss").css("transform").split(" ")[5]);
+        var bossAttX = parseFloat($("#bossAttack").css("transform").split(" ")[4]);
+        var bossAttY = parseFloat($("#bossAttack").css("transform").split(" ")[5]);
+        checkBossAttHitPlayer(bossAttX, bossAttY - 240);
+        checkBulletHitBoss(boolLaser, bossX, bossY - 270);
+        checkBossHitPlayer(bossX, bossY - 270);
+	}
 }
+
+// Check boss att player
+function checkBossAttHitPlayer(bossAttX, bossAttY){
+    var playerX = getPlayerX();
+    var playerY = getPlayerY();
+    if(damage){
+        if($("#player").css("display") !== "none"){
+            if((playerX - 70) <= bossAttX && bossAttX <= (playerX + 70)&& (playerY - 40) <= bossAttY && bossAttY <= (playerY) && $("#bossAttack").css("display") !== "none"){
+                loseHealth("bossAttack");
+            }
+        }
+    }
+}
+
+// check player hit boss
+function checkBulletHitBoss(isLaser, bossX, bossY){
+    if(isLaser){
+        var laserX = parseFloat($("#laser").css("transform").split(" ")[4]);
+        var laserY = parseFloat($("#laser").css("transform").split(" ")[5]);
+        if((bossX - 30) <= laserX && laserX <= (bossX + 30) && (bossY + 100) >= laserY  && laserY >= (bossY) && $("#boss").css("display") !== "none"){
+            hitBoss(boolLaser);
+        }
+    } else {
+        var bulletX = parseFloat($("#right-bullet").css("transform").split(" ")[4]);
+        var bulletY = parseFloat($("#right-bullet").css("transform").split(" ")[5]);
+        if((bossX - 30) <= bulletX && bulletX <= (bossX + 30) && (bossY + 70) >= bulletY  && bulletY >= (bossY) && $("#boss").css("display") !== "none"){
+            hitBoss(boolLaser);
+        }
+    }
+}
+
+// check boss hit player
+function checkBossHitPlayer(bossX, bossY){
+    var playerX = getPlayerX();
+    var playerY = getPlayerY();
+    if(damage){
+        if($("#player").css("display") !== "none"){
+            if((playerX - 100) <= bossX && bossX <= (playerX + 100) && (playerY - 40) <= bossY  && bossY <= (playerY + 100) && $("#boss").css("display") !== "none"){
+                loseHealth("bossAttack");
+            }
+        }
+    }
+}
+
+// Boss lose health helper function
+// Laser will have *2 damage
+function hitBoss(isLaser){
+    console.log("hit boss, " + bossHealth);
+    if(isLaser){
+        $("#boss-heart-" + bossHealth).hide();
+        bossHealth--;
+        $("#laser").css("display", "none");
+    }
+    else{
+        $("#left-bullet").css("display", "none");
+        $("#right-bullet").css("display", "none");
+    }
+    $("#boss-heart-" + bossHealth).hide();
+    bossHealth--;
+    if(bossHealth <= 0){
+        win = true;
+        bossHealth = 8;
+    }
+}
+
 // Check type 1 (bomb) crash with player
 function checkBombHitPlayer(index, bombX, bombY){
     var playerX = getPlayerX();
@@ -537,7 +613,8 @@ function checkBoss() {
 		setInterval(bossMove, 100);
 	}
 	if(win){
-		console.log("You win!")
+		gameOver();
+		$("#win-text").show();
 	}
 
 }
@@ -555,6 +632,7 @@ function mainGame() {
 }
 
 $(document).ready(function() {
+    $("#win-text").hide();
     $('#start-button').click(function() {
         start();
         setTimeout(countdown, 1000);
