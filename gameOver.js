@@ -21,6 +21,7 @@ function restart(){
 	boolRapidFire = false;
 	win = false;
 	blinkCount = 6;
+	bossHealth = 8;
 
     $("#win-text").hide();
 	$('#bossAttack').hide();
