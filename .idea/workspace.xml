@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb85ffe-4b5a-4f36-87d0-d76b4fadb451" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/raiden-fighters.html" afterPath="$PROJECT_DIR$/raiden-fighters.html" />
-      <change beforePath="$PROJECT_DIR$/startPage.css" afterPath="$PROJECT_DIR$/startPage.css" />
-      <change beforePath="$PROJECT_DIR$/startPage.js" afterPath="$PROJECT_DIR$/startPage.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="raiden-fighters.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="raiden-fighters.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/raiden-fighters.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1699">
-              <caret line="426" column="16" lean-forward="false" selection-start-line="426" selection-start-column="16" selection-end-line="428" selection-end-column="20" />
+            <state relative-caret-position="710">
+              <caret line="279" column="20" lean-forward="false" selection-start-line="279" selection-start-column="20" selection-end-line="279" selection-end-column="20" />
               <folding>
                 <element signature="e#10826#10832#0" expanded="true" />
                 <element signature="e#11511#11517#0" expanded="true" />
@@ -76,7 +74,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="259">
@@ -98,7 +96,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>checkBoss</find>
       <find>bossAttackTime</find>
       <find>time-va</find>
       <find>enemy-type1-style</find>
@@ -128,6 +125,7 @@
       <find>boss</find>
       <find>enemy</find>
       <find>hover</find>
+      <find>point</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -271,7 +269,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100520000" />
+    <option name="totallyTimeSpent" value="101535000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="957" extended-state="0" />
@@ -716,21 +714,6 @@
       </provider>
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js" />
-    <entry file="file://$PROJECT_DIR$/raiden-fighters.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1699">
-          <caret line="426" column="16" lean-forward="false" selection-start-line="426" selection-start-column="16" selection-end-line="428" selection-end-column="20" />
-          <folding>
-            <element signature="e#10826#10832#0" expanded="true" />
-            <element signature="e#11511#11517#0" expanded="true" />
-            <element signature="e#11831#11837#0" expanded="true" />
-            <element signature="e#11850#11856#0" expanded="true" />
-            <element signature="e#12922#12928#0" expanded="true" />
-            <element signature="e#12941#12947#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/raiden-fighters.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1013">
@@ -768,6 +751,21 @@
         <state relative-caret-position="259">
           <caret line="493" column="12" lean-forward="false" selection-start-line="493" selection-start-column="12" selection-end-line="493" selection-end-column="12" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/raiden-fighters.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="710">
+          <caret line="279" column="20" lean-forward="false" selection-start-line="279" selection-start-column="20" selection-end-line="279" selection-end-column="20" />
+          <folding>
+            <element signature="e#10826#10832#0" expanded="true" />
+            <element signature="e#11511#11517#0" expanded="true" />
+            <element signature="e#11831#11837#0" expanded="true" />
+            <element signature="e#11850#11856#0" expanded="true" />
+            <element signature="e#12922#12928#0" expanded="true" />
+            <element signature="e#12941#12947#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
