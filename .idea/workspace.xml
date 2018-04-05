@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb85ffe-4b5a-4f36-87d0-d76b4fadb451" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/raiden-fighters.html" afterPath="$PROJECT_DIR$/raiden-fighters.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -269,7 +268,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101535000" />
+    <option name="totallyTimeSpent" value="101645000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="957" extended-state="0" />
