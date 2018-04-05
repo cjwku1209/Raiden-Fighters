@@ -1,5 +1,7 @@
 function start(){
     //Transition effect
+    startPageAudio.pause();
+    gameplayAudio.play();
 
 	if($('#start-Page').css("display") === 'block'){
 		$("#start-Page").fadeOut(300);

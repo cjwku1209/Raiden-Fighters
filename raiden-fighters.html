@@ -240,8 +240,22 @@
         <!--Instruction Page-->
         <div id="instruction-page">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
+                <defs>
+                    <linearGradient spreadMethod="pad" y2="1" x2="0.00238" y1="0" x1="0" id="main-bullet-color-ins">
+                        <stop offset="0" stop-color="#f20000"/>
+                        <stop offset="1" stop-color="#ffff00"/>
+                    </linearGradient>
+                </defs>
+
+                <defs>
+                    <linearGradient spreadMethod="pad" y2="1" x2="0.00238" y1="0" x1="0" id="main-lazer-color-ins">
+                        <stop offset="0" stop-color="#D1E7D1"/>
+                        <stop offset="1" stop-color="#66B266"/>
+                    </linearGradient>
+                </defs>
                 <!--space -->
                 <rect id="start-Page-space" height="500" width="350" y="0" x="0" stroke="none" fill="#0F0F24"/>
+
                 <g id="svg_23">
                     <rect stroke="#000000" fill="#ffffff" x="183.98147" y="133.4996" width="0.81048" height="0" id="svg_3"/>
                     <text stroke="#000000" transform="matrix(0.6246529832198966,0,0,0.6246529832198966,11.437455932739045,3.899878020402272) " font-weight="bold" xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" id="svg_1" y="27.21506" x="100.806" stroke-width="0" fill="#ffffff">Background Story:</text>
@@ -269,8 +283,9 @@
                     <g id="svg_13" stroke="null">
                         <path d="m113.00897,287.87481l-7.89963,7.74198l-4.73771,0l-4.74029,6.1946c0,0 5.02141,-1.3704 7.94863,-0.72818l-7.94863,10.02007l10.4142,-7.9392c1.452,3.25911 -0.9362,7.9392 -0.9362,7.9392l6.31867,-4.64721l0,-4.64468l7.89963,-7.74451l1.57838,-7.74198l-7.89705,1.54991z" fill="#ffffff" id="svg_1" stroke="null"/>
                     </g>
+
                     <text fill="#ffffff" stroke-width="0" x="226.33857" y="229.8286" id="svg_3" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(0.5646444131089206,0,0,0.5646444131089206,36.94976830912529,65.51352987735774) " stroke="null">30 points</text>
-                    <text fill="#ffffff" stroke-width="0" x="312.15658" y="290.36446" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(0.5646444131089206,0,0,0.5646444131089206,36.94976830912529,65.51352987735774) " id="svg_8" stroke="null">0 points, cannot be killed</text>
+                    <text fill="#ffffff" stroke-width="0" x="312.15658" y="290.36446" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(0.5646444131089206,0,0,0.5646444131089206,36.94976830912529,65.51352987735774) " id="svg_8" stroke="null">0 points, cannot be destroyed</text>
                     <text fill="#ffffff" stroke-width="0" x="226.33857" y="355.18217" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(0.5646444131089206,0,0,0.5646444131089206,36.94976830912529,65.51352987735774) " id="svg_9" stroke="null">20 points</text>
                     <text fill="#ffffff" stroke-width="0" x="226.33857" y="425.39152" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(0.5646444131089206,0,0,0.5646444131089206,36.94976830912529,65.51352987735774) " id="svg_10" stroke="null">50 points</text>
                     <text fill="#ffffff" stroke-width="0" x="-112.15667" y="217.6467" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(0.43519004814275586,0,0,0.43519004814275586,98.87094154254736,100.16635234580562) " id="svg_14" stroke="null">drop bomb plane</text>
@@ -312,12 +327,14 @@
    <text stroke="#000000" fill="#ff0000" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="187.29849" y="663.93916" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" font-weight="bold" transform="matrix(0.41317258534030543,0,0,0.41317258534030543,90.26980224342309,179.25271497187788) " id="svg_32">Left</text>
    <text stroke="#000000" fill="#ff0000" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="304.09576" y="662.4932" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" font-weight="bold" transform="matrix(0.41317258534030543,0,0,0.41317258534030543,90.26980224342309,179.25271497187788) " id="svg_33">Right</text>
                 </g>
-
+                <circle id="rapid-fire-item-instruction" r="8" cx="40" cy="352" fill="url(#main-bullet-color-ins)"/>
+                <circle id="laser-item-instruction" r="8" cx="40" cy="375" fill="url(#main-lazer-color-ins)"/>
                 <g class="start-button" font-size="19">
                     <text class="start-text" x="287" y="480" fill="green" text-anchor="middle">Let's Start!</text>
                 </g>
             </svg>
         </div>
+
         <!--Game scene-->
         <div id="main">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
@@ -499,14 +516,17 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
                 <!--Space-->
                 <rect id="space" height="500" width="350" y="0" x="0" stroke="none" fill="#0F0F24"/>
+                <g id="game-title" >
+                    <text id="game-text" x="175" y="125" fill="white" text-anchor="middle" font-size="40">Raiden Fighter</text>
+                </g>
                 <g id="time-container">
-                    <text id="game-over-score-text" x="175" y="15" fill="red" font-size="16" text-anchor="middle">Your final score: </text>
-                    <text id="game-over-score-value" x="175" y="30" fill="white" font-size="16" text-anchor="middle"></text>
-                    <text id="win-text" x="175" y="50" fill="white" font-size="16" text-anchor="middle">You win!</text>
+                    <text id="game-over-score-text" x="175" y="175" fill="red" font-size="16" text-anchor="middle">Your final score: </text>
+                    <text id="game-over-score-value" x="175" y="215" fill="grey" font-size="25" text-anchor="middle"></text>
+                    <text id="win-text" x="175" y="250" fill="white" font-size="16" text-anchor="middle"></text>
                 </g>
                 <!--Restart button-->
                 <g id="restart-button" font-size="25">
-                    <text id="restart-text" x="87" y="250" fill="white" text-anchor="middle">Restart!</text>
+                    <text id="restart-text" x="175" y="350" fill="white" text-anchor="middle">Restart!</text>
                 </g>
             </svg>
         </div>

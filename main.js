@@ -14,6 +14,19 @@ var bossLevel = false;
 var win = false;
 var blinkTimeout;
 var bossHealth = 8;
+var gameplayAudio = new Audio("gameplay.mp3");
+var startPageAudio = new Audio("startPageBgm.mp3");
+var gameOverAudio = new Audio("gameoverBgm.mp3");
+var bulletAudio = new Audio("bullet.mp3");
+var laserAudio = new Audio("laser.mp3");
+
+
+startPageAudio.play();
+startPageAudio.loop = true;
+gameplayAudio.loop = true;
+gameOverAudio.loop = true;
+startPageAudio.volume = 0.3;
+gameplayAudio.volume = 0.8;
 
 // Timer
 function countdown() {
@@ -101,9 +114,8 @@ function generateItemTypeTwo(){
 
 // Generate random enemy
 function randomEnemyTypeGenerator(){
-	console.log("generate enemy");
-     var typeNum = Math.floor(Math.random() * (3)) + 1;
-    //var typeNum = 1;
+    var typeNum = Math.floor(Math.random() * (3)) + 1;
+    //var typeNum = 3;
     switch (typeNum){
         case 1:
             generateEnemyTypeOne();
@@ -230,6 +242,7 @@ function loseHealth(enemyType){
     $("#heart" + health).hide();
     health--;
     if (health <= 0){
+        $("#win-text").text("You lose! Try again!");
         gameOver();
     }
     blink();
@@ -239,7 +252,7 @@ function loseHealth(enemyType){
 function killEnemy(point){
 	score += point;
 	$("#score-value").text(score);
-	if (score >= 0){
+	if (score >= 500){
 		GibsonBoss();
 	}
 }
@@ -272,7 +285,6 @@ function bossMove(){
 
 function bossAttack() {
 	if(bossLevel){
-		console.log("in");
 		var bossX =x;
 		if(bossX >= 100){
 			bossX = 100;
@@ -396,7 +408,6 @@ function checkBossHitPlayer(bossX, bossY){
 // Boss lose health helper function
 // Laser will have *2 damage
 function hitBoss(isLaser){
-    console.log("hit boss, " + bossHealth);
     if(isLaser){
         $("#boss-heart-" + bossHealth).hide();
         bossHealth--;
@@ -409,6 +420,7 @@ function hitBoss(isLaser){
     $("#boss-heart-" + bossHealth).hide();
     bossHealth--;
     if(bossHealth <= 0){
+        score += 100;
         win = true;
         bossHealth = 8;
     }
@@ -525,9 +537,9 @@ function checkBulletHitMeteor(isLaser, meteor1X, meteor1Y, meteor2X, meteor2Y, m
 function checkSpaceBombHitPlayer(spaceX, spaceY){
     var playerX = getPlayerX();
     var playerY = getPlayerY();
-    if(!damage){
+    if(damage){
 		if($("#player").css("display") !== "none"){
-			if((playerX - 30) <= spaceX && spaceX <= (playerX + 30) && (playerY - 60) <= spaceY && spaceY <= (playerY) && $("#space-bomb").css("display") !== "none"){
+			if((playerX - 30) <= spaceX && spaceX <= (playerX + 30) && (playerY - 60) <= spaceY && spaceY <= (playerY + 10) && $("#space-bomb").css("display") !== "none"){
 				loseHealth("space-bomb");
 			}
 		}
@@ -576,7 +588,6 @@ function checkItemHit(){
 
     if(!isNaN(laserItemX)){
     	if((playerX - 15) <= laserItemX && laserItemX <= (playerX + 15) && (playerY - 40) <= laserItemY && laserItemY <= (playerY)){
-    		//console.log(playerY + " " + laserItemY + " got laser");
             $("#laser-item").css("display", "none");
             if(boolRapidFire){
             	boolRapidFire = false;
@@ -591,7 +602,6 @@ function checkItemHit(){
 		}
 	}else if(!isNaN(rapidX)){
         if((playerX - 15) <= rapidX && rapidX<= (playerX + 15) && (playerY - 40) <= rapidY && rapidY <= (playerY)){
-            //console.log(playerY + " " + rapidY + " got rapid");
             $("#rapid-fire-item").css("display", "none");
             if(boolLaser){
             	boolLaser = false;
@@ -613,8 +623,8 @@ function checkBoss() {
 		setInterval(bossMove, 100);
 	}
 	if(win){
+        $("#win-text").text("Congrats!! You win!!");
 		gameOver();
-		$("#win-text").show();
 	}
 
 }
@@ -761,7 +771,6 @@ $(document).ready(function() {
 	});
 
     window.addEventListener('keydown', function (e) {
-        // console.log(e.keyCode);
         switch (e.keyCode) {
 			case 32:	//space
 				var shootYcor = $("#right-bullet").css("transform");
@@ -785,6 +794,8 @@ $(document).ready(function() {
                     $('#right-bullet').css("display", "block");
                     $('#left-bullet').css('animationPlayState', 'running');
                     $('#right-bullet').css('animationPlayState', 'running');
+                    bulletAudio.load();
+                    bulletAudio.play();
                 }
                 else if (isNaN(laserYcor) && boolLaser == true){
                     laserFrameChange(x,y);
@@ -792,6 +803,8 @@ $(document).ready(function() {
 					$("#laser").css("animationDuration", animationDuration + "s");
                     $('#laser').css("display", "block");
                     $('#laser').css('animationPlayState', 'running');
+                    laserAudio.load();
+                    laserAudio.play();
                 }
                 break;
             case 37:	//left

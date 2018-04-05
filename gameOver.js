@@ -27,6 +27,12 @@ function restart(){
 	$('#bossAttack').hide();
 	$('#bossAttack').css("animationPlayState", "paused");
     $('#player').show();
+    $('#laser').css("display", "none");
+    $('#laser').css("animationPlayState", "paused");
+    $('#left-bullet').css("display", "none");
+    $('#left-bullet').css("animationPlayState", "paused");
+    $('#right-bullet').css("display", "none");
+    $('#right-bullet').css("animationPlayState", "paused");
 	$('#enemy-type1-1').css("animationPlayState", "paused");
 	$('#enemy-type1-1').css("display", "none");
     $('#enemy-type1-2').css("animationPlayState", "paused");
@@ -54,6 +60,8 @@ function restart(){
     setTimeout(function(){
         $("#gameOver").css("display","none");
         $("#main").css("display","block");
+        gameOverAudio.pause();
+        gameplayAudio.play();
     }, 250);
 }
 
@@ -62,8 +70,16 @@ function restart(){
 function gameOver(){
     $("#game-over-score-value").text($("#score-value").text());
     $("#main").fadeOut(300);
+    gameplayAudio.pause();
+    gameOverAudio.play();
+    for(var i = 0; i <= 0.6; i+=0.01){
+        gameOverAudio.volume = i;
+        setTimeout(function(){}, 0.1);
+    }
+
     setTimeout(function(){
         $("#main").css("display","none");
         $("#gameOver").css("display","block");
     }, 250);
+    $("#win-text").show();
 }
