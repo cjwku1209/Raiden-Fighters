@@ -633,11 +633,15 @@ function mainGame() {
 
 $(document).ready(function() {
     $("#win-text").hide();
-    $('#start-button').click(function() {
+    $('.start-button').click(function() {
         start();
         setTimeout(countdown, 1000);
         mainGame();
     });
+
+    $('#instruction-button').click(function () {
+		instruction();
+	});
 
     $('#restart-button').click(function() {
         restart();
