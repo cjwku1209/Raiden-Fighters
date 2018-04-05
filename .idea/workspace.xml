@@ -19,8 +19,8 @@
       <file leaf-file-name="raiden-fighters.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/raiden-fighters.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="710">
-              <caret line="279" column="20" lean-forward="false" selection-start-line="279" selection-start-column="20" selection-end-line="279" selection-end-column="20" />
+            <state relative-caret-position="-3726">
+              <caret line="286" column="316" lean-forward="false" selection-start-line="286" selection-start-column="316" selection-end-line="286" selection-end-column="316" />
               <folding>
                 <element signature="e#10826#10832#0" expanded="true" />
                 <element signature="e#11511#11517#0" expanded="true" />
@@ -268,7 +268,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101645000" />
+    <option name="totallyTimeSpent" value="104213000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="957" extended-state="0" />
@@ -755,8 +755,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/raiden-fighters.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="710">
-          <caret line="279" column="20" lean-forward="false" selection-start-line="279" selection-start-column="20" selection-end-line="279" selection-end-column="20" />
+        <state relative-caret-position="-3726">
+          <caret line="286" column="316" lean-forward="false" selection-start-line="286" selection-start-column="316" selection-end-line="286" selection-end-column="316" />
           <folding>
             <element signature="e#10826#10832#0" expanded="true" />
             <element signature="e#11511#11517#0" expanded="true" />
