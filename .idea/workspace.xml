@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb85ffe-4b5a-4f36-87d0-d76b4fadb451" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/bombDrop.mp3" afterPath="$PROJECT_DIR$/bombDrop.mp3" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/meteorSound.mp3" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/rocketSound.mp3" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,7 +22,7 @@
       <file leaf-file-name="raiden-fighters.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/raiden-fighters.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
+            <state relative-caret-position="6441">
               <caret line="339" column="57" lean-forward="false" selection-start-line="339" selection-start-column="56" selection-end-line="339" selection-end-column="57" />
               <folding />
             </state>
@@ -70,8 +72,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="566">
-              <caret line="141" column="49" lean-forward="false" selection-start-line="141" selection-start-column="49" selection-end-line="141" selection-end-column="49" />
+            <state relative-caret-position="600">
+              <caret line="43" column="24" lean-forward="false" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -89,7 +91,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>start-text</find>
       <find>laser</find>
       <find>rapid</find>
       <find>boss</find>
@@ -119,6 +120,7 @@
       <find>audio</find>
       <find>bullet.mp3</find>
       <find>console</find>
+      <find>generateEnem</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -229,6 +231,11 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/poowang/Documents/github/COMP4021-Assignment 1/raiden-fighters.css" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -262,7 +269,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114921000" />
+    <option name="totallyTimeSpent" value="115759000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="957" extended-state="0" />
@@ -702,7 +709,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/raiden-fighters.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
+        <state relative-caret-position="6441">
           <caret line="339" column="57" lean-forward="false" selection-start-line="339" selection-start-column="56" selection-end-line="339" selection-end-column="57" />
           <folding />
         </state>
@@ -710,8 +717,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="141" column="49" lean-forward="false" selection-start-line="141" selection-start-column="49" selection-end-line="141" selection-end-column="49" />
+        <state relative-caret-position="600">
+          <caret line="43" column="24" lean-forward="false" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
           <folding />
         </state>
       </provider>

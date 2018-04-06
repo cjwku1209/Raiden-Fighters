@@ -21,6 +21,10 @@ var bulletAudio = new Audio("bullet.mp3");
 var laserAudio = new Audio("laser.mp3");
 var enemyType1Audio = new Audio("enemyType1.mp3");
 var bombDropAudio = new Audio("bombDrop.mp3");
+var meteorAudio1 = new Audio("meteorSound.mp3");
+var meteorAudio2 = new Audio("meteorSound.mp3");
+var meteorAudio3 = new Audio("meteorSound.mp3");
+var rocketAudio = new Audio("rocketSound.mp3");
 
 
 startPageAudio.play();
@@ -34,6 +38,10 @@ bulletAudio.volume = 1 ;
 laserAudio.volume = 1;
 enemyType1Audio.volume = 1;
 bombDropAudio.volume = 1;
+meteorAudio1.volume = 0.3;
+meteorAudio2.volume = 0.3;
+meteorAudio3.volume = 0.3;
+rocketAudio.volume = 0.5;
 
 // Timer
 function countdown() {
@@ -123,7 +131,7 @@ function generateItemTypeTwo(){
 function randomEnemyTypeGenerator(){
     // var typeNum = Math.floor(Math.random() * (3)) + 1;
 	enemyType1Audio.pause();
-    var typeNum = 1;
+    var typeNum = 3;
     switch (typeNum){
 		case 1:
 			if($('#enemy-type1-1').css('animationPlayState') === 'running' || $('#enemy-type1-2').css('animationPlayState') === 'running' || $('#enemy-type1-3').css('animationPlayState') === 'runing'){
@@ -143,6 +151,12 @@ function randomEnemyTypeGenerator(){
             break;
 
         case 2:
+        	meteorAudio1.load();
+        	meteorAudio2.load();
+        	meteorAudio3.load();
+        	meteorAudio1.play();
+        	meteorAudio2.play();
+        	meteorAudio3.play();
             generateEnemyTypeTwo();
             $('#meteor1').css("display", "block");
             $('#meteor2').css("display", "block");
@@ -153,6 +167,8 @@ function randomEnemyTypeGenerator(){
             break;
 
         case 3:
+        	rocketAudio.load();
+        	rocketAudio.play();
             generateEnemyTypeThree();
             $('#space-bomb').css("display", "block");
             $('#space-bomb').css('animationPlayState', 'running');
@@ -750,6 +766,7 @@ $(document).ready(function() {
 			"animationPlayState": "paused",
 			'display': 'none'
 		});
+		meteorAudio1.pause();
 	});
 
 	$("#meteor2").on("animationiteration", function() {
@@ -757,6 +774,7 @@ $(document).ready(function() {
 			"animationPlayState": "paused",
 			'display': 'none'
 		});
+		meteorAudio2.pause();
 	});
 
 	$("#meteor3").on("animationiteration", function() {
@@ -764,6 +782,7 @@ $(document).ready(function() {
 			"animationPlayState": "paused",
 			'display': 'none'
 		});
+		meteorAudio3.pause();
 	});
 
 	$("#space-bomb").on("animationiteration", function() {
@@ -771,6 +790,7 @@ $(document).ready(function() {
 			"animationPlayState": "paused",
 			'display': 'none'
 		});
+		rocketAudio.pause();
 	});
 
     $("#laser-item").on("animationiteration", function() {
