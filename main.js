@@ -25,23 +25,26 @@ var meteorAudio1 = new Audio("meteorSound.mp3");
 var meteorAudio2 = new Audio("meteorSound.mp3");
 var meteorAudio3 = new Audio("meteorSound.mp3");
 var rocketAudio = new Audio("rocketSound.mp3");
+var hitAudio = new Audio("hitSound.mp3");
+var lifeLostAudio = new Audio("lifeLost.mp3");
 
 
 startPageAudio.play();
 startPageAudio.loop = true;
 gameplayAudio.loop = true;
 gameOverAudio.loop = true;
-// enemyType1Audio = true;
 startPageAudio.volume = 0.3;
 gameplayAudio.volume = 0.3;
 bulletAudio.volume = 1 ;
 laserAudio.volume = 1;
-enemyType1Audio.volume = 1;
+enemyType1Audio.volume = 0.8;
 bombDropAudio.volume = 1;
 meteorAudio1.volume = 0.3;
 meteorAudio2.volume = 0.3;
 meteorAudio3.volume = 0.3;
 rocketAudio.volume = 0.5;
+hitAudio.volume = 1;
+lifeLostAudio.volume =1;
 
 // Timer
 function countdown() {
@@ -129,9 +132,8 @@ function generateItemTypeTwo(){
 
 // Generate random enemy
 function randomEnemyTypeGenerator(){
-    // var typeNum = Math.floor(Math.random() * (3)) + 1;
+    var typeNum = Math.floor(Math.random() * (3)) + 1;
 	enemyType1Audio.pause();
-    var typeNum = 3;
     switch (typeNum){
 		case 1:
 			if($('#enemy-type1-1').css('animationPlayState') === 'running' || $('#enemy-type1-2').css('animationPlayState') === 'running' || $('#enemy-type1-3').css('animationPlayState') === 'runing'){
@@ -275,6 +277,8 @@ function enemyTypeOneDropBomb() {
 
 // Call when player crash with enemy
 function loseHealth(enemyType){
+	lifeLostAudio.load();
+	lifeLostAudio.play();
     $("#" + enemyType).css("display", "none");
     $("#player").css("display", "none");
     setTimeout(function(){
@@ -296,6 +300,9 @@ function killEnemy(point){
 	if (score >= 500){
 		GibsonBoss();
 	}
+	hitAudio.load();
+	hitAudio.play();
+
 }
 
 //boss Level
