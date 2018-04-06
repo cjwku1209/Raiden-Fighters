@@ -26,6 +26,27 @@ text {
     font-size: 130%;
 }
 
+#instruction-text {
+    display: block;
+    cursor: pointer;
+    transition: all 1.5s;
+}
+
+#instruction-text:hover {
+    fill: green;
+    font-size: 130%;
+}
+
+#ins-start-text {
+    display: block;
+    cursor: pointer;
+    transition: all 1.5s;
+}
+
+#ins-start-text:hover {
+    fill: red;
+    font-size: 110%;
+}
 #start-Page-airplane {
     transform: translate(117px,-33px);
 }
@@ -43,3 +64,16 @@ text {
 #instruction-page {
     display: none;
 }
+
+#game-text {
+    animation: titleColor 10s cubic-bezier(0,0,1,1) infinite;
+}
+
+
+@keyframes titleColor {
+    0% { fill: pink; }
+    33% { fill: Fuchsia; }
+    67% { fill: CornflowerBlue; }
+    100% { fill: pink; }
+}
+

@@ -29,7 +29,8 @@ var hitAudio = new Audio("hitSound.mp3");
 var lifeLostAudio = new Audio("lifeLost.mp3");
 var buttonClickedAudio = new Audio("buttonClicked.mp3");
 var bossAudio = new Audio("bossBgm.mp3");
-
+var bossHitAudio = new Audio("bossHit.mp3");
+var itemAudio = new Audio("item.mp3");
 
 startPageAudio.play();
 startPageAudio.loop = true;
@@ -48,6 +49,7 @@ meteorAudio3.volume = 0.3;
 rocketAudio.volume = 0.5;
 hitAudio.volume = 1;
 lifeLostAudio.volume = 0.8;
+bossAudio.volume = 0.5;
 
 // Timer
 function countdown() {
@@ -62,9 +64,11 @@ function countdown() {
 
     // Game over when the time is up
     else {
+        $("#win-text").text("You lose! Try again!");
         gameOver();
     }
 }
+
 
 // blink when enemy hit
 function blink() {
@@ -142,8 +146,10 @@ function randomEnemyTypeGenerator(){
 			if($('#enemy-type1-1').css('animationPlayState') === 'running' || $('#enemy-type1-2').css('animationPlayState') === 'running' || $('#enemy-type1-3').css('animationPlayState') === 'runing'){
 				break;
 			}
-			enemyType1Audio.load();
-			enemyType1Audio.play();
+			if($("#main").css("display") !== "none"){
+                enemyType1Audio.load();
+                enemyType1Audio.play();
+            }
             generateEnemyTypeOne();
             $('#enemy-type1-1').css("display", "block");
             $('#enemy-type1-2').css("display", "block");
@@ -156,12 +162,14 @@ function randomEnemyTypeGenerator(){
             break;
 
         case 2:
-        	meteorAudio1.load();
-        	meteorAudio2.load();
-        	meteorAudio3.load();
-        	meteorAudio1.play();
-        	meteorAudio2.play();
-        	meteorAudio3.play();
+            if($("#main").css("display") !== "none"){
+                meteorAudio1.load();
+                meteorAudio2.load();
+                meteorAudio3.load();
+                meteorAudio1.play();
+                meteorAudio2.play();
+                meteorAudio3.play();
+            }
             generateEnemyTypeTwo();
             $('#meteor1').css("display", "block");
             $('#meteor2').css("display", "block");
@@ -172,8 +180,10 @@ function randomEnemyTypeGenerator(){
             break;
 
         case 3:
-        	rocketAudio.load();
-        	rocketAudio.play();
+            if($("#main").css("display") !== "none") {
+                rocketAudio.load();
+                rocketAudio.play();
+            }
             generateEnemyTypeThree();
             $('#space-bomb').css("display", "block");
             $('#space-bomb').css('animationPlayState', 'running');
@@ -270,7 +280,7 @@ function enemyTypeOneDropBomb() {
 		$('#bomb1-3').css('animationPlayState', 'running');
 		count++;
 	}
-	if(count != 0){
+	if(count != 0 && $("#main").css("display") !== "none"){
 		bombDropAudio.load();
 		bombDropAudio.play();
 	}
@@ -305,7 +315,6 @@ function killEnemy(point){
 	}
 	hitAudio.load();
 	hitAudio.play();
-
 }
 
 //boss Level
@@ -323,10 +332,6 @@ function GibsonBoss(){
         gameplayAudio.pause();
         bossAudio.load();
         bossAudio.play();
-        for(var i = 0; i <= 0.3; i+=0.01){
-            bossAudio.volume = i;
-            setTimeout(function(){}, 0.1);
-        }
     }
 }
 
@@ -479,11 +484,13 @@ function hitBoss(isLaser){
         $("#left-bullet").css("display", "none");
         $("#right-bullet").css("display", "none");
     }
+    bossHitAudio.load();
+    bossHitAudio.play();
     $("#boss-heart-" + bossHealth).hide();
     bossHealth--;
     if(bossHealth <= 0){
-        score += 100;
         win = true;
+        score += 100;
         bossHealth = 8;
     }
 }
@@ -601,7 +608,7 @@ function checkSpaceBombHitPlayer(spaceX, spaceY){
     var playerY = getPlayerY();
     if(damage){
 		if($("#player").css("display") !== "none"){
-			if((playerX - 30) <= spaceX && spaceX <= (playerX + 30) && (playerY - 60) <= spaceY && spaceY <= (playerY + 10) && $("#space-bomb").css("display") !== "none"){
+			if((playerX - 30) <= spaceX && spaceX <= (playerX + 30) && (playerY - 50) <= spaceY && spaceY <= (playerY + 30) && $("#space-bomb").css("display") !== "none"){
 				loseHealth("space-bomb");
 			}
 		}
@@ -657,6 +664,8 @@ function checkItemHit(){
 			}else if (boolLaser){
             	clearTimeout(LaserTimeout);
 			}
+			itemAudio.load();
+			itemAudio.play();
 			boolLaser = true;
             LaserTimeout = setTimeout(function(){
                 boolLaser = false;
@@ -671,6 +680,8 @@ function checkItemHit(){
 			}else if (boolRapidFire){
             	clearTimeout(RapidFireTimeout);
 			}
+            itemAudio.load();
+            itemAudio.play();
 			boolRapidFire = true;
 			RapidFireTimeout = setTimeout(function(){
 				boolRapidFire = false;
@@ -686,6 +697,7 @@ function checkBoss() {
 	}
 	if(win){
         $("#win-text").text("Congrats!! You win!!");
+        $("#score-value").text(score);
 		gameOver();
 	}
 
@@ -865,8 +877,10 @@ $(document).ready(function() {
                     $('#right-bullet').css("display", "block");
                     $('#left-bullet').css('animationPlayState', 'running');
                     $('#right-bullet').css('animationPlayState', 'running');
-                    bulletAudio.load();
-                    bulletAudio.play();
+                    if($("#main").css("display") !== "none") {
+                        bulletAudio.load();
+                        bulletAudio.play();
+                    }
                 }
                 else if (isNaN(laserYcor) && boolLaser == true){
                     laserFrameChange(x,y);
@@ -874,8 +888,10 @@ $(document).ready(function() {
 					$("#laser").css("animationDuration", animationDuration + "s");
                     $('#laser').css("display", "block");
                     $('#laser').css('animationPlayState', 'running');
-                    laserAudio.load();
-                    laserAudio.play();
+                    if($("#main").css("display") !== "none") {
+                        laserAudio.load();
+                        laserAudio.play();
+                    }
                 }
                 break;
             case 37:	//left
