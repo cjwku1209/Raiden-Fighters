@@ -20,6 +20,7 @@ var gameOverAudio = new Audio("gameoverBgm.mp3");
 var bulletAudio = new Audio("bullet.mp3");
 var laserAudio = new Audio("laser.mp3");
 var enemyType1Audio = new Audio("enemyType1.mp3");
+var bombDropAudio = new Audio("bombDrop.mp3");
 
 
 startPageAudio.play();
@@ -32,6 +33,7 @@ gameplayAudio.volume = 0.3;
 bulletAudio.volume = 1 ;
 laserAudio.volume = 1;
 enemyType1Audio.volume = 1;
+bombDropAudio.volume = 1;
 
 // Timer
 function countdown() {
@@ -136,6 +138,8 @@ function randomEnemyTypeGenerator(){
             $('#enemy-type1-1').css('animationPlayState', 'running');
             $('#enemy-type1-2').css('animationPlayState', 'running');
             $('#enemy-type1-3').css('animationPlayState', 'running');
+			var time = (Math.floor(Math.random() * (3)) + 1)*1000;
+			setTimeout(enemyTypeOneDropBomb, time);
             break;
 
         case 2:
@@ -210,7 +214,9 @@ function generateEnemyTypeThree() {
 // Drop bomb animation
 function enemyTypeOneDropBomb() {
 	var styles;
-	if($('#enemy-type1-1').css("animation-play-state")=="running" && $('#bomb1-1').css("animation-play-state")=="paused" && $('#enemy-type1-1').css("display")=="block"){
+	var count = 0;
+
+	if($('#enemy-type1-1').css("animation-play-state")==="running" && $('#bomb1-1').css("animation-play-state")==="paused" && $('#enemy-type1-1').css("display")==='block'){
 		styles = document.getElementById('bomb1-style');
 		var bomb1X= parseFloat($('#enemy-type1-1').css("transform").split(" ")[4]);
 		var bomb1Y= parseFloat($('#enemy-type1-1').css("transform").split(" ")[5]);
@@ -219,9 +225,10 @@ function enemyTypeOneDropBomb() {
 		styles.innerText= str;
 		$('#bomb1-1').css("display", "block");
 		$('#bomb1-1').css('animationPlayState', 'running');
+		count ++;
 
 	}
-	if($('#enemy-type1-2').css("animation-play-state")=="running" && $('#bomb1-2').css("animation-play-state")=="paused" && $('#enemy-type1-1').css("display")=="block"){
+	if($('#enemy-type1-2').css("animation-play-state")==="running" && $('#bomb1-2').css("animation-play-state")==="paused" && $('#enemy-type1-2').css("display") ==='block'){
 		styles = document.getElementById('bomb2-style');
 		var bomb2X= parseFloat($('#enemy-type1-2').css("transform").split(" ")[4]);
 		var bomb2Y= parseFloat($('#enemy-type1-2').css("transform").split(" ")[5]);
@@ -229,9 +236,10 @@ function enemyTypeOneDropBomb() {
 		styles.innerText= str;
 		$('#bomb1-2').css("display", "block");
 		$('#bomb1-2').css('animationPlayState', 'running');
+		count ++;
 
 	}
-	if($('#enemy-type1-3').css("animation-play-state")=="running" && $('#bomb1-3').css("animation-play-state")=="paused" && $('#enemy-type1-1').css("display")=="block"){
+	if($('#enemy-type1-3').css("animation-play-state")=="running" && $('#bomb1-3').css("animation-play-state")==="paused" && $('#enemy-type1-3').css("display")==='block'){
 		styles = document.getElementById('bomb3-style');
 		var bomb3X= parseFloat($('#enemy-type1-3').css("transform").split(" ")[4]);
 		var bomb3Y= parseFloat($('#enemy-type1-3').css("transform").split(" ")[5]);
@@ -239,7 +247,13 @@ function enemyTypeOneDropBomb() {
 		styles.innerText= str;
 		$('#bomb1-3').css("display", "block");
 		$('#bomb1-3').css('animationPlayState', 'running');
+		count++;
 	}
+	if(count != 0){
+		bombDropAudio.load();
+		bombDropAudio.play();
+	}
+
 
 }
 
@@ -647,7 +661,6 @@ function mainGame() {
     setInterval(randomFiringModeItemGenerator, parseInt(Math.random()*30000) + 20000);
     setInterval(checkItemHit, 100);
     setInterval(checkHit, 100);
-	setInterval(enemyTypeOneDropBomb, 3000);
 	setInterval(checkBoss, 100);
 	setInterval(bossAttack, 5000);
 }
