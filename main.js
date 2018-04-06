@@ -19,7 +19,7 @@ var startPageAudio = new Audio("startPageBgm.mp3");
 var gameOverAudio = new Audio("gameoverBgm.mp3");
 var bulletAudio = new Audio("bullet.mp3");
 var laserAudio = new Audio("laser.mp3");
-var enemyType1Audio = new Audio("enemy1sound.mp3")
+var enemyType1Audio = new Audio("enemyType1.mp3");
 
 
 startPageAudio.play();
@@ -107,12 +107,11 @@ function generateItemTypeOne(){
     var style = document.getElementById('laser-item-style');
     var str = "@keyframes laser-item-animation { from { transform: translate(" + x + "px, -459px);}" + " to { transform: translate(" + x +"px , 0px);}}";
     style.innerText= str;
-    setTimeout(function(){
-        enemyType1Audio.pause();
-    },3000);
-    enemyType1Audio.load();
-    enemyType1Audio.play();
-    console.log("Generate");
+    // setTimeout(function(){
+    //     enemyType1Audio.pause();
+    // },3000);
+
+    // console.log("Generate");
 
 }
 
@@ -126,10 +125,14 @@ function generateItemTypeTwo(){
 
 // Generate random enemy
 function randomEnemyTypeGenerator(){
-    //var typeNum = Math.floor(Math.random() * (3)) + 1;
-    var typeNum = 1;
+    var typeNum = Math.floor(Math.random() * (3)) + 1;
+	enemyType1Audio.pause();
+    // var typeNum = 1;
     switch (typeNum){
         case 1:
+
+			enemyType1Audio.load();
+			enemyType1Audio.play();
             generateEnemyTypeOne();
             $('#enemy-type1-1').css("display", "block");
             $('#enemy-type1-2').css("display", "block");
@@ -644,7 +647,7 @@ function mainGame() {
 	// $('#enemy-type2-1').css('transform', 'translate(-40px, -400px)');
 	randomEnemyTypeGenerator();
     randomFiringModeItemGenerator();
-	setInterval(randomEnemyTypeGenerator, 5000);
+	setInterval(randomEnemyTypeGenerator, 5500);
     setInterval(randomFiringModeItemGenerator, parseInt(Math.random()*30000) + 20000);
     setInterval(checkItemHit, 100);
     setInterval(checkHit, 100);
