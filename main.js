@@ -26,7 +26,9 @@ startPageAudio.loop = true;
 gameplayAudio.loop = true;
 gameOverAudio.loop = true;
 startPageAudio.volume = 0.3;
-gameplayAudio.volume = 0.8;
+gameplayAudio.volume = 0.5;
+bulletAudio.volume = 1 ;
+laserAudio.volume = 1;
 
 // Timer
 function countdown() {
