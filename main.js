@@ -26,7 +26,7 @@ startPageAudio.play();
 startPageAudio.loop = true;
 gameplayAudio.loop = true;
 gameOverAudio.loop = true;
-enemyType1Audio = true;
+// enemyType1Audio = true;
 startPageAudio.volume = 0.3;
 gameplayAudio.volume = 0.3;
 bulletAudio.volume = 1 ;
@@ -107,6 +107,13 @@ function generateItemTypeOne(){
     var style = document.getElementById('laser-item-style');
     var str = "@keyframes laser-item-animation { from { transform: translate(" + x + "px, -459px);}" + " to { transform: translate(" + x +"px , 0px);}}";
     style.innerText= str;
+    setTimeout(function(){
+        enemyType1Audio.pause();
+    },3000);
+    enemyType1Audio.load();
+    enemyType1Audio.play();
+    console.log("Generate");
+
 }
 
 
@@ -119,8 +126,8 @@ function generateItemTypeTwo(){
 
 // Generate random enemy
 function randomEnemyTypeGenerator(){
-    var typeNum = Math.floor(Math.random() * (3)) + 1;
-    //var typeNum = 3;
+    //var typeNum = Math.floor(Math.random() * (3)) + 1;
+    var typeNum = 1;
     switch (typeNum){
         case 1:
             generateEnemyTypeOne();
