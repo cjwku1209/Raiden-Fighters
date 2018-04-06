@@ -19,16 +19,19 @@ var startPageAudio = new Audio("startPageBgm.mp3");
 var gameOverAudio = new Audio("gameoverBgm.mp3");
 var bulletAudio = new Audio("bullet.mp3");
 var laserAudio = new Audio("laser.mp3");
+var enemyType1Audio = new Audio("enemy1sound.mp3")
 
 
 startPageAudio.play();
 startPageAudio.loop = true;
 gameplayAudio.loop = true;
 gameOverAudio.loop = true;
+enemyType1Audio = true;
 startPageAudio.volume = 0.3;
-gameplayAudio.volume = 0.5;
+gameplayAudio.volume = 0.3;
 bulletAudio.volume = 1 ;
 laserAudio.volume = 1;
+enemyType1Audio.volume = 1;
 
 // Timer
 function countdown() {
