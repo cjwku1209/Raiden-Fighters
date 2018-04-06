@@ -1,6 +1,7 @@
 function start(){
     //Transition effect
     startPageAudio.pause();
+    gameplayAudio.load();
     gameplayAudio.play();
 
 	if($('#start-Page').css("display") === 'block'){

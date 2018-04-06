@@ -61,6 +61,7 @@ function restart(){
         $("#gameOver").css("display","none");
         $("#main").css("display","block");
         gameOverAudio.pause();
+        gameplayAudio.load();
         gameplayAudio.play();
     }, 250);
 }
@@ -70,7 +71,7 @@ function restart(){
 function gameOver(){
     $("#game-over-score-value").text($("#score-value").text());
     $("#main").fadeOut(300);
-    gameplayAudio.pause();
+    bossAudio.pause();
     gameOverAudio.play();
     for(var i = 0; i <= 0.6; i+=0.01){
         gameOverAudio.volume = i;

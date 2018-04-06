@@ -27,12 +27,15 @@ var meteorAudio3 = new Audio("meteorSound.mp3");
 var rocketAudio = new Audio("rocketSound.mp3");
 var hitAudio = new Audio("hitSound.mp3");
 var lifeLostAudio = new Audio("lifeLost.mp3");
+var buttonClickedAudio = new Audio("buttonClicked.mp3");
+var bossAudio = new Audio("bossBgm.mp3");
 
 
 startPageAudio.play();
 startPageAudio.loop = true;
 gameplayAudio.loop = true;
 gameOverAudio.loop = true;
+bossAudio.loop = true;
 startPageAudio.volume = 0.3;
 gameplayAudio.volume = 0.3;
 bulletAudio.volume = 1 ;
@@ -44,7 +47,7 @@ meteorAudio2.volume = 0.3;
 meteorAudio3.volume = 0.3;
 rocketAudio.volume = 0.5;
 hitAudio.volume = 1;
-lifeLostAudio.volume =1;
+lifeLostAudio.volume = 0.8;
 
 // Timer
 function countdown() {
@@ -313,6 +316,17 @@ function GibsonBoss(){
             $("#boss-heart-" + i).show();
         }
         bossLevel = true;
+        for(var i = 0.3; i >=0; i-=0.01){
+            gameplayAudio.volume = i;
+            setTimeout(function(){}, 0.1);
+        }
+        gameplayAudio.pause();
+        bossAudio.load();
+        bossAudio.play();
+        for(var i = 0; i <= 0.3; i+=0.01){
+            bossAudio.volume = i;
+            setTimeout(function(){}, 0.1);
+        }
     }
 }
 
@@ -691,16 +705,22 @@ function mainGame() {
 $(document).ready(function() {
     $("#win-text").hide();
     $('.start-button').click(function() {
+        buttonClickedAudio.load();
+        buttonClickedAudio.play();
         start();
         setTimeout(countdown, 1000);
         mainGame();
     });
 
     $('#instruction-button').click(function () {
-		instruction();
+        buttonClickedAudio.load();
+        buttonClickedAudio.play();
+        instruction();
 	});
 
     $('#restart-button').click(function() {
+        buttonClickedAudio.load();
+        buttonClickedAudio.play();
         restart();
         setTimeout(countdown, 1000);
     });
