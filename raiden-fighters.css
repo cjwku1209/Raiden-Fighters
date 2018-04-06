@@ -32,7 +32,7 @@
 #enemy-type1-1{
     display: none;
     display: none;
-    animation-name: enemy-type1-animation;
+    animation-name: enemy-type1-1-animation;
     animation-duration: 5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -42,7 +42,7 @@
 #enemy-type1-2{
     display: none;
     display: none;
-    animation-name: enemy-type1-animation;
+    animation-name: enemy-type1-2-animation;
     animation-duration: 5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -52,7 +52,7 @@
 #enemy-type1-3{
     display: none;
     display: none;
-    animation-name: enemy-type1-animation;
+    animation-name: enemy-type1-3-animation;
     animation-duration: 5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -70,7 +70,7 @@
 
 #bomb1-2 {
     display: none;
-    animation-name: bomb1-animation;
+    animation-name: bomb2-animation;
     animation-duration: 2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -79,7 +79,7 @@
 
 #bomb1-3 {
     display: none;
-    animation-name: bomb1-animation;
+    animation-name: bomb3-animation;
     animation-duration: 2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -113,9 +113,25 @@
     animation-play-state: paused;
 }
 
+#laser-item{
+    display: none;
+    animation-name: laser-item-animation;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+}
+
+#rapid-fire-item{
+    display: none;
+    animation-name: rapid-fire-item-animation;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+}
+
 #space-bomb {
-    /*display: none;*/
-    /*transform: translate(180px, -280px); !* x= -200 y= -280*!*/
     display: none;
     animation-name: space-bomb-animation;
     animation-duration: 2s;
@@ -123,7 +139,49 @@
     animation-iteration-count: infinite;
     animation-play-state: paused;
 }
-/*#boss {*/
-    /*display: block;*/
-    /*transform: translate(20px, 100px);*/
-/*}*/
+
+#boss{
+    display: none;
+    position: relative;
+}
+
+#boss-heart-1 {
+    display: none;
+}
+
+#boss-heart-2 {
+    display: none;
+}
+
+#boss-heart-3 {
+    display: none;
+}
+
+#boss-heart-4 {
+    display: none;
+}
+
+#boss-heart-5 {
+    display: none;
+}
+
+#boss-heart-6 {
+    display: none;
+}
+
+#boss-heart-7 {
+    display: none;
+}
+
+#boss-heart-8 {
+    display: none;
+}
+
+#bossAttack{
+    display: none;
+    animation-name: boss-attack-animation;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+}

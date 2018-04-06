@@ -1,0 +1,14 @@
+#gameOver {
+    display: none;
+}
+
+#restart-text{
+    display: block;
+    cursor: pointer;
+    transition: all 1.5s;
+}
+
+#restart-text:hover {
+    fill: CornflowerBlue;
+    font-size: 130%;
+}
